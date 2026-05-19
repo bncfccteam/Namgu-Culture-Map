@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export default function Home() {
-  const totalPlaces = 30;
-  const visitedCount = 0;
+  const totalPlaces = 20;
+  const visitedCount = 7;
   const progress = (visitedCount / totalPlaces) * 100;
 
   return (
@@ -18,11 +20,17 @@ export default function Home() {
           나만의 문화지도를 완성해보세요.
         </p>
 
-        {/* 지도 이미지 자리 */}
-        <div className="w-full aspect-square bg-gray-200 rounded-2xl flex items-center justify-center mb-6">
-          <span className="text-gray-500">지도 이미지가 들어갈 자리</span>
+        {/* 지도 이미지 */}
+        <div className="w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-200">
+          <Image
+            src="/map-placeholder.png"
+            alt="문화지도"
+            width={800}
+            height={800}
+            className="w-full h-full object-cover"
+          />
         </div>
-
+        
         {/* 진행률 텍스트 */}
         <div className="mb-2 flex justify-between text-sm font-medium">
           <span>진행률</span>
