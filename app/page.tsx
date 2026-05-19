@@ -2,7 +2,18 @@ import Image from "next/image";
 
 export default function Home() {
   const totalPlaces = 20;
-  const visitedCount = 7;
+
+  const visitedPlaces = [
+    "library",
+    "museum",
+    "art-center",
+    "gallery",
+    "book-cafe",
+    "theater",
+    "culture-center",
+  ];
+
+  const visitedCount = visitedPlaces.length;
   const progress = (visitedCount / totalPlaces) * 100;
 
   return (
