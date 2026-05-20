@@ -1,17 +1,22 @@
-import Image from "next/image";
+'use client'; //0519_2주차_브라우저에서 실행되는 기능(localStorage)을 사용한다는 것을 명시하는 지시문
+import Image from "next/image"; //Next.js의 이미지 컴포턴트 기능 가져오기(모듈)
+import { useEffect, useState } from "react";
+
 
 export default function Home() {
   const totalPlaces = 20;
 
-  const visitedPlaces = [
-    "library",
-    "museum",
-    "art-center",
-    "gallery",
-    "book-cafe",
-    "theater",
-    "culture-center",
-  ];
+  const [visitedPlaces, setVisitedPlaces] = useState<string[]>([]); 
+  // 방문한 장소들의 ID를 저장하는 상태 변수. 초기값은 빈 배열로 설정.
+  // python: visited_places = []
+
+  useEffect(() => {
+    const saved = localStorage.getItem("visitedPlaces");
+      // localStorage에서 "visitedPlaces"라는 키로 저장된 데이터를 가져와서 saved 변수에 저장.
+    if (saved) {
+      setVisitedPlaces(JSON.parse(saved));
+    } //저장된 데이터(visitedPlaces 배열에 데이터 O)가 있을 때만 다음 코드를 실행
+  }, []); //useEffect : 페이지가 처음 열렸을 때 한 번 실행되는 코드
 
   const visitedCount = visitedPlaces.length;
   const progress = (visitedCount / totalPlaces) * 100;
