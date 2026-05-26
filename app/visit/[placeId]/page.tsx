@@ -1,16 +1,17 @@
 'use client';
 
-import { useEffect } from "react";
+import { use, useEffect, useState } from "react";
 
 type VisitPageProps = {
-  params: {
+  params: Promise<{
     placeId: string;
-  };
+  }>;
 };
 
 export default function VisitPage({ params }: VisitPageProps) {
+  const { placeId } = use(params);
+  const [isAnimating, setIsAnimating] = useState(true);
   useEffect(() => {
-    const placeId = params.placeId;
 
     const saved = localStorage.getItem("visitedPlaces");
     const visitedPlaces: string[] = saved ? JSON.parse(saved) : [];
@@ -23,21 +24,57 @@ export default function VisitPage({ params }: VisitPageProps) {
         JSON.stringify(visitedPlaces)
       );
     }
-  }, [params.placeId]);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 3000);
+  }, [placeId]);
+
+  const placeData: Record<string, { name: string; image: string }> = {
+    library: {
+      name: "도서관",
+      image: "/illustrations/library.png",
+    },
+
+    museum: {
+      name: "박물관",
+      image: "/illustrations/museum.png",
+    },
+
+    gallery: {
+      name: "전시관",
+      image: "/illustrations/gallery.png",
+    },
+  };
+
+  const currentPlace = placeData[placeId];
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 text-center">
-      <h1 className="text-3xl font-bold mb-4">
-        방문 완료!
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-black to-gray-900 text-white">
+      <h1 className="text-5xl font-bold text-red-500 mb-4">
+        테스트 방문 완료!
       </h1>
 
-      <p className="text-lg text-gray-600 mb-6">
+      {currentPlace && (
+        <img
+          src={currentPlace.image}
+          alt={currentPlace.name}
+          className="w-48 h-48 object-contain mb-6 rounded-2xl shadow-2xl transition-all duration-700"
+          style={{
+            animation: isAnimating
+              ? "floatBounce 3s ease-out forwards"
+              : "floating 3s ease-in-out infinite",
+          }}
+        />
+      )}
+
+      <p className="text-lg text-white mb-6">
         새로운 문화시설이 지도에 추가되었습니다.
       </p>
 
       <a
         href="/"
-        className="px-6 py-3 bg-black text-white rounded-full"
+        className="px-6 py-3 bg-red-500 text-white rounded-full hover:scale-105 transition"
       >
         내 지도 보기
       </a>
@@ -45,4 +82,3 @@ export default function VisitPage({ params }: VisitPageProps) {
   );
 }
 
-//깃허브에 마지막 내용 올렸는지 확인 (0521목욜에)

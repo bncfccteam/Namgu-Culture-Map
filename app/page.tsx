@@ -21,8 +21,34 @@ export default function Home() {
   const visitedCount = visitedPlaces.length;
   const progress = (visitedCount / totalPlaces) * 100;
 
+  {/* 시설 데이터 구조 */}  //시설 데이터 구조를 정의하는 배열. 
+  //각 객체는 시설의 ID, 이미지 경로, 지도에서의 위치(상단과 좌측 비율)를 포함.
+  const places = [
+    {
+      id: "library",
+      image: "/illustrations/library.png",
+      top: "20%",
+      left: "30%",
+    },
+
+    {
+      id: "museum",
+      image: "/illustrations/museum.png",
+      top: "45%",
+      left: "55%",
+    },
+
+    {
+      id: "gallery",
+      image: "/illustrations/gallery.png",
+      top: "65%",
+      left: "40%",
+    },
+  ];
+
+
   return (
-    <main className="min-h-screen bg-gray-100 p-6">
+    <main className="min-h-screen bg-gray-100 p-6 relative">
       <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-6">
         {/* 제목 */}
         <h1 className="text-3xl font-bold text-center mb-4">
@@ -37,14 +63,34 @@ export default function Home() {
         </p>
 
         {/* 지도 이미지 */}
-        <div className="w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-200">
+        <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-200">
+
+          {/* 전체 지도 */}
           <Image
-            src="/map-placeholder.png"
+            src="/img/map-placeholder.png"
             alt="문화지도"
             width={800}
             height={800}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-50"
           />
+
+          {places.map((place) => {
+            if (!visitedPlaces.includes(place.id)) return null;
+
+            return (
+              <img
+                key={place.id}
+                src={place.image}
+                alt={place.id}
+                className="absolute w-16 h-16 object-contain animate-floating"
+                style={{
+                  top: place.top,
+                  left: place.left,
+                }}
+              />
+            );
+          })}
+
         </div>
         
         {/* 진행률 텍스트 */}
