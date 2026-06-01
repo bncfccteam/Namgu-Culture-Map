@@ -1,85 +1,59 @@
 @import "tailwindcss";
 
+/* 컴파일러 내부 @import 순서 꼬임 버그를 우회하기 위해 @font-face 방식으로 직접 정의 */
+@font-face {
+  font-family: 'NeoDunggeunmo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/NeoDunggeunmo.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/Galmuri11.woff') format('woff');
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0077b6;
+  --foreground: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-pixel-blue-light: #00b4d8;
+  --color-pixel-blue-dark: #0077b6;
+  --color-field-green: #38b000;
+  --color-field-grass: #70e000;
+  --color-dirt-brown: #9a7b56;
+  --color-item-gold: #ffb703;
+  --color-dot-dark: #1a1a1a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-retroLanded: retroLanded 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+  @keyframes retroLanded {
+    0% {
+      transform: scaleY(0) translateY(100px);
+      opacity: 0;
+    }
+    60% {
+      transform: scaleY(1.25) translateY(-15px);
+      opacity: 1;
+    }
+    85% {
+      transform: scaleY(0.9) translateY(5px);
+    }
+    100% {
+      transform: scaleY(1) translateY(0);
+      opacity: 1;
+    }
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Galmuri11', Arial, sans-serif;
 }
 
-/* 
-처음 방문 완료 시:
-강하게 튀는 애니메이션 이후에는 floating 애니메이션으로 전환
-*/ 
-
- @keyframes floatBounce {
-    0% {
-      transform: scale(0.6) translateY(40px);
-      opacity: 0;
-    }
-
-    20% {
-      transform: scale(1.15) translateY(-20px);
-      opacity: 1;
-    }
-
-    40% {
-      transform: scale(0.95) translateY(10px);
-    }
-
-    60% {
-      transform: scale(1.05) translateY(-6px);
-    }
-
-    80% {
-      transform: scale(0.98) translateY(2px);
-    }
-
-    100% {
-      transform: scale(1) translateY(0);
-      opacity: 1;
-    }
-  }
-
-.animate-floatBounce {
-  animation: floatBounce 3s ease-out forwards;
+.font-pixel-title {
+  font-family: 'NeoDunggeunmo', sans-serif;
 }
-
-@keyframes floating {
-    0% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-8px);
-    }
-
-    100% {
-      transform: translateY(0px);
-    }
-}
-
-.animate-floating {
-  animation: floating 3s ease-in-out infinite;
-}
- 
-/* (위) 처음 방문 완료 시: 강하게 튀는 애니메이션 , floating 애니메이션으로 전환 css코드
-*/ 

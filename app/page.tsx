@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-100 p-6 relative">
-      <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-6">
+      <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-6 text-black">
         {/* 제목 */}
         <h1 className="text-3xl font-bold text-center mb-4">
           나만의 남구 문화지도 완성하기
@@ -57,9 +57,10 @@ export default function Home() {
 
         {/* 설명 */}
         <p className="text-gray-600 text-center mb-6 leading-relaxed">
-          부산 남구의 문화시설을 방문하며
+          문화시설 방문을 통해
+
           <br />
-          나만의 문화지도를 완성해보세요.
+          나만의 디지털 지도를 활성화해보세요.
         </p>
 
         {/* 지도 이미지 */}
