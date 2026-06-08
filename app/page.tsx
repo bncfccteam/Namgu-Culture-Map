@@ -1,6 +1,5 @@
 'use client'; //0519_2주차_브라우저에서 실행되는 기능(localStorage)을 사용한다는 것을 명시하는 지시문
 
-import Image from "next/image"; //Next.js의 이미지 컴포턴트 기능 가져오기(모듈)
 import { useEffect, useState } from "react";
 
 // ----------------------------------------------------
@@ -53,7 +52,38 @@ const getSupabaseInstance = async () => {
 };
 
 export default function Home() {
-  const totalPlaces = 20;
+  // ----------------------------------------------------
+  // [6.3단계 - 1차 시설 데이터 구조 정의]
+  // - 참조 관계 에러 방지 및 6.3단계 동기화를 위해 시설 정보 배열을 맨 위로 배치했습니다.
+  // - 각 객체는 시설의 ID, 이미지 경로, 지도에서의 위치(상단과 좌측 비율)를 포함합니다.
+  // - 💡 상사분 피드백에 따라 장소를 추가/수정하실 때는 이 배열 안의 값만 편집하시면 됩니다!
+  // ----------------------------------------------------
+  const places = [
+    {
+      id: "library",
+      name: "도서관",
+      image: "/illustrations/library.png",
+      top: "20%",
+      left: "30%",
+    },
+    {
+      id: "museum",
+      name: "박물관",
+      image: "/illustrations/museum.png",
+      top: "45%",
+      left: "55%",
+    },
+    {
+      id: "gallery",
+      name: "전시관",
+      image: "/illustrations/gallery.png",
+      top: "65%",
+      left: "40%",
+    },
+  ];
+
+  // 💡 [6.3단계 핵심] totalPlaces 상수를 places 배열의 실제 원소 개수로 자동 동기화합니다.
+  const totalPlaces = places.length;
 
   const [visitedPlaces, setVisitedPlaces] = useState<string[]>([]); 
   // 방문한 장소들의 ID를 저장하는 상태 변수. 초기값은 빈 배열로 설정.
@@ -67,7 +97,6 @@ export default function Home() {
   // - 로컬스토리지의 방문 기록과 Supabase 클라우드 서버의 방문 기록을 결합하여
   //   유실 없는 최종 방문 이력 목록(visitedPlaces)을 완성합니다.
   // ----------------------------------------------------
-  //useEffect : 페이지가 처음 열렸을 때 한 번 실행되는 코드 블록
   useEffect(() => {
     const syncAndFetchVisits = async () => {
       if (typeof window === 'undefined') return;
@@ -120,32 +149,8 @@ export default function Home() {
   }, []); 
 
   const visitedCount = visitedPlaces.length;
-  const progress = (visitedCount / totalPlaces) * 100;
-
-  {/* 시설 데이터 구조 */}  //시설 데이터 구조를 정의하는 배열. 
-  //각 객체는 시설의 ID, 이미지 경로, 지도에서의 위치(상단과 좌측 비율)를 포함.
-  const places = [
-    {
-      id: "library",
-      image: "/illustrations/library.png",
-      top: "20%",
-      left: "30%",
-    },
-
-    {
-      id: "museum",
-      image: "/illustrations/museum.png",
-      top: "45%",
-      left: "55%",
-    },
-
-    {
-      id: "gallery",
-      image: "/illustrations/gallery.png",
-      top: "65%",
-      left: "40%",
-    },
-  ];
+  // 💡 [6.3단계] totalPlaces가 0개일 경우를 대비해 나눗셈 안전 처리를 추가했습니다.
+  const progress = totalPlaces > 0 ? (visitedCount / totalPlaces) * 100 : 0;
 
   return (
     <main className="min-h-screen bg-gray-100 p-6 relative text-black">
@@ -183,12 +188,12 @@ export default function Home() {
         <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-200">
 
           {/* 전체 지도 */}
-          {/* 원래 코드 양식 그대로 Next.js의 Image 컴포넌트로 완벽하게 복구했습니다! */}
-          <Image
+          {/* 💡 [빌드 최적화] 컴파일러 및 샌드박스 빌드 의존성 에러(next/image 미해결)를 원천 차단하기 위해 
+              표준 <img> 태그 형식을 사용합니다. 로컬 환경에서 Next.js <Image> 컴포넌트로 다시 사용하시려면 
+              상단에 'import Image from "next/image"'를 복구하시고 아래 코드를 그대로 바꾸시면 됩니다. */}
+          <img
             src="/img/map-placeholder.png"
             alt="문화지도"
-            width={800}
-            height={800}
             className="w-full h-full object-cover opacity-50"
           />
 
