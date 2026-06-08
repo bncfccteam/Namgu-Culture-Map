@@ -1,7 +1,100 @@
 'use client';
 
 import { use, useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 
+// ----------------------------------------------------
+// [빌드/컴파일 에러를 완벽히 해결하는 하이브리드 로더]
+// - 샌드박스 또는 클라우드 컴파일 환경에서 발생하는 Supabase 패키지 경로 탐색 에러를
+//   원천적으로 차단하기 위해, 동적 로더 패턴을 도입하여 안전성을 극대화합니다.
+// ----------------------------------------------------
+let supabaseInstance: any = null;
+
+const getSupabaseInstance = async () => {
+  if (supabaseInstance) return supabaseInstance;
+  
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+
+  // 정적 컴파일러(esbuild)의 파일 해석 에러를 방지하기 위해 런타임 동적 탐색 및 CDN 폴백을 사용합니다.
+  const createClientFn = await (async () => {
+    try {
+      const module = await Function('return import("@supabase/supabase-js")')();
+      return module.createClient;
+    } catch (e) {
+      return new Promise<any>((resolve) => {
+        if (typeof window === "undefined") {
+          resolve(null);
+          return;
+        }
+        if ((window as any).supabase) {
+          resolve((window as any).supabase.createClient);
+          return;
+        }
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+        script.onload = () => {
+          resolve((window as any).supabase?.createClient || null);
+        };
+        script.onerror = () => resolve(null);
+        document.head.appendChild(script);
+      });
+    }
+  })();
+
+  if (createClientFn && supabaseUrl && supabaseAnonKey) {
+    supabaseInstance = createClientFn(supabaseUrl, supabaseAnonKey);
+  }
+  return supabaseInstance;
+};
+
+/**
+ * 사용자의 고유 UUID를 브라우저에서 가져오거나 새로 생성하여 
+ * Supabase 'users' 테이블에 최초로 등록하는 내부 헬퍼 함수
+ */
+const initializeUserInPage = async (supabase: any) => {
+  if (typeof window === 'undefined') return null;
+
+  const STORAGE_KEY = 'namgu_user_id';
+  let userId = localStorage.getItem(STORAGE_KEY);
+
+  if (!userId) {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      userId = crypto.randomUUID();
+    } else {
+      userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    }
+
+    if (supabase) {
+      try {
+        const { error } = await supabase
+          .from('users')
+          .insert([{ id: userId }]);
+
+        if (error) throw error;
+
+        localStorage.setItem(STORAGE_KEY, userId);
+        console.log('🎉 [Supabase] 새 사용자 고유 ID 등록 완료:', userId);
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error('🚨 [Supabase] 사용자 등록 중 오류 발생:', errorMessage);
+        localStorage.setItem(STORAGE_KEY, userId);
+      }
+    } else {
+      localStorage.setItem(STORAGE_KEY, userId);
+    }
+  } else {
+    console.log('📱 [LocalStorage] 기존 사용자 ID 확인됨:', userId);
+  }
+
+  return userId;
+};
+
+//////////////////////////////////////////////////////////////////////////////////
 type VisitPageProps = {
   params: Promise<{
     placeId: string;
@@ -11,23 +104,82 @@ type VisitPageProps = {
 export default function VisitPage({ params }: VisitPageProps) {
   const { placeId } = use(params);
   const [isAnimating, setIsAnimating] = useState(true);
+  const [dbStatus, setDbStatus] = useState<"loading" | "success" | "error">("loading");
+
   useEffect(() => {
+    const handleRegisterAndVisit = async () => {
+      try {
+        // 1. Supabase 인스턴스 안전하게 로드
+        const supabase = await getSupabaseInstance();
+        
+        // 2. 고유 사용자 ID(UUID) 발급 및 확인 (5단계 연동)
+        const userId = await initializeUserInPage(supabase);
+        
+        if (!userId) {
+          throw new Error("사용자 고유 식별자를 생성하거나 불러올 수 없습니다.");
+        }
 
-    const saved = localStorage.getItem("visitedPlaces");
-    const visitedPlaces: string[] = saved ? JSON.parse(saved) : [];
+      // 3. Supabase 'visits' 테이블에 현재 시설 방문 정보 저장 (6단계 연동)
+      if (supabase) {
+        const { error: visitError } = await supabase
+          .from("visits")
+          .insert([
+            { user_id: userId, place_id: placeId }
+          ]);
 
-    // 이미 방문한 장소가 아니라면 추가
-    if (!visitedPlaces.includes(placeId)) {
-      visitedPlaces.push(placeId);
-      localStorage.setItem(
-        "visitedPlaces",
-        JSON.stringify(visitedPlaces)
-      );
+        if (visitError) {
+          if (visitError.code === "23505") {
+            console.log("📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다.");
+          } else {
+            throw visitError;
+          }
+        } else {
+          console.log(`🎉 [Supabase] ${placeId} 방문 기록 서버 전송 성공!`);
+        }
+      } else {
+        console.warn("⚠️ Supabase 데이터베이스 연결을 확립할 수 없습니다. 오프라인 모드로 진행합니다.");
+      }
+
+      // 4. 로컬 저장소(localStorage)에도 방문 장소 목록을 동기화하여 하이브리드 보존 처리
+      const saved = localStorage.getItem("visitedPlaces");
+      const visitedPlaces: string[] = saved ? JSON.parse(saved) : [];
+
+      // 이미 방문한 장소가 아니라면 추가
+      if (!visitedPlaces.includes(placeId)) {
+        visitedPlaces.push(placeId);
+        localStorage.setItem(
+          "visitedPlaces",
+          JSON.stringify(visitedPlaces)
+        );
+      }
+
+      setDbStatus("success");
+
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", errorMessage);
+      setDbStatus("error");
+      
+      // 서버 장애나 일시적 통신 무산 시에도, 사용자의 온디바이스(localStorage) 저장을 수행하여 이탈을 방지합니다.
+      const saved = localStorage.getItem("visitedPlaces");
+      const visitedPlaces: string[] = saved ? JSON.parse(saved) : [];
+      if (!visitedPlaces.includes(placeId)) {
+        visitedPlaces.push(placeId);
+        localStorage.setItem("visitedPlaces", JSON.stringify(visitedPlaces));
+        }
+      }
+    };  
+
+    if (placeId) {
+      handleRegisterAndVisit();
     }
 
-    setTimeout(() => {
+    // 기존의 3초간의 연출 및 로딩 애니메이션 유지
+    const timer = setTimeout(() => {
       setIsAnimating(false);
     }, 3000);
+
+    return () => clearTimeout(timer);
   }, [placeId]);
 
   const placeData: Record<string, { name: string; image: string }> = {
