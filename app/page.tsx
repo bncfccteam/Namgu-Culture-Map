@@ -2,26 +2,26 @@
 
 import { useEffect, useState } from "react";
 
-// ----------------------------------------------------
-// [6.2단계 - Supabase 안전 로드 시스템]
-// - 브라우저 런타임 환경에서 'process is not defined' 에러가 발생하는 것을 
-//   원천적으로 방지하기 위해 window 객체 및 조건부 검사 필터를 내장한 로더입니다.
-// ----------------------------------------------------
 let supabaseInstance: any = null;
 
+/**
+ * 런타임 및 ESM 탐색 경로 무오류형 Supabase 인스턴스 팩토리
+ */
 const getSupabaseInstance = async () => {
   if (supabaseInstance) return supabaseInstance;
-  
-  // 브라우저 환경(typeof window !== 'undefined')에서 Next.js 환경 변수를 안전하게 가로챕니다.
-  const supabaseUrl = typeof process !== 'undefined' && process.env ? process.env.NEXT_PUBLIC_SUPABASE_URL : (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_SUPABASE_URL || "";
-  const supabaseAnonKey = typeof process !== 'undefined' && process.env ? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY : (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+
+  const staticUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const staticKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  const supabaseUrl = staticUrl || (typeof window !== 'undefined' ? ((window as any).NEXT_PUBLIC_SUPABASE_URL || (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_SUPABASE_URL) : "") || "";
+  const supabaseAnonKey = staticKey || (typeof window !== 'undefined' ? ((window as any).NEXT_PUBLIC_SUPABASE_ANON_KEY || (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_SUPABASE_ANON_KEY) : "") || "";
 
   const createClientFn = await (async () => {
     try {
       const module = await Function('return import("@supabase/supabase-js")')();
       return module.createClient;
     } catch (e) {
-      return new Promise((resolve) => {
+      return new Promise<any>((resolve) => {
         if (typeof window === "undefined") {
           resolve(null);
           return;
@@ -41,45 +41,58 @@ const getSupabaseInstance = async () => {
     }
   })();
 
-  // 런타임 변수 획득 실패 시, window 혹은 로컬 보완책을 통해 주소를 한 번 더 검증합니다.
-  const finalUrl = supabaseUrl || (typeof window !== 'undefined' ? (window as any).NEXT_PUBLIC_SUPABASE_URL : "");
-  const finalKey = supabaseAnonKey || (typeof window !== 'undefined' ? (window as any).NEXT_PUBLIC_SUPABASE_ANON_KEY : "");
-
-  if (createClientFn && finalUrl && finalKey) {
-    supabaseInstance = createClientFn(finalUrl, finalKey);
+  if (createClientFn && supabaseUrl && supabaseAnonKey) {
+    supabaseInstance = createClientFn(supabaseUrl, supabaseAnonKey);
   }
   return supabaseInstance;
 };
 
+/**
+ * 사용자 고유 ID 발급 및 로컬 보존 로직
+ */
+const getOrCreateUserId = () => {
+  if (typeof window === 'undefined') return null;
+
+  const STORAGE_KEY = 'namgu_user_id';
+  let userId = localStorage.getItem(STORAGE_KEY);
+
+  if (!userId) {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      userId = crypto.randomUUID();
+    } else {
+      userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    }
+    localStorage.setItem(STORAGE_KEY, userId);
+  }
+
+  return userId;
+};
+
+
 export default function Home() {
   // ----------------------------------------------------
-  // [6.3단계 - 1차 시설 데이터 구조 정의]
-  // - 참조 관계 에러 방지 및 6.3단계 동기화를 위해 시설 정보 배열을 맨 위로 배치했습니다.
-  // - 각 객체는 시설의 ID, 이미지 경로, 지도에서의 위치(상단과 좌측 비율)를 포함합니다.
-  // - 💡 상사분 피드백에 따라 장소를 추가/수정하실 때는 이 배열 안의 값만 편집하시면 됩니다!
+  // [Step 8.1 - 13개 확정 문화시설 데이터 구조 매핑]
+  // - 남구청 및 재단으로부터 확정받은 13개 시설을 정식으로 장전합니다.
+  // - top, left 비율은 맵 placeholder 규격에 맞춰 미세 정렬할 수 있습니다.
   // ----------------------------------------------------
   const places = [
-    {
-      id: "library",
-      name: "도서관",
-      image: "/illustrations/library.png",
-      top: "20%",
-      left: "30%",
-    },
-    {
-      id: "museum",
-      name: "박물관",
-      image: "/illustrations/museum.png",
-      top: "45%",
-      left: "55%",
-    },
-    {
-      id: "gallery",
-      name: "전시관",
-      image: "/illustrations/gallery.png",
-      top: "65%",
-      left: "40%",
-    },
+    { id: "munhyeon-art", name: "문현아트센터", image: "/illustrations/munhyeon.png", top: "15%", left: "20%" },
+    { id: "daedonggol-culture", name: "대동골문화센터", image: "/illustrations/daedonggol.png", top: "25%", left: "45%" },
+    { id: "haeparangil-info", name: "해파랑길관광안내소", image: "/illustrations/haeparangil.png", top: "35%", left: "70%" }, // 💡 ID를 haeparangil-info로 통일
+    { id: "somak-village", name: "우암동 소막마을", image: "/illustrations/somak.png", top: "45%", left: "15%" },
+    { id: "bunpo-sports", name: "분포문화체육센터", image: "/illustrations/bunpo.png", top: "52%", left: "55%" },
+    { id: "namgu-library", name: "남구도서관", image: "/illustrations/namgu-library.png", top: "62%", left: "30%" },
+    { id: "gogossing-job", name: "청년창조발전소고고씽Job", image: "/illustrations/gogossing.png", top: "72%", left: "80%" },
+    { id: "miu-study", name: "미우서재", image: "/illustrations/miu.png", top: "82%", left: "45%" }, // 💡 ID를 miu-study로 통일
+    { id: "chocolate-factory", name: "초콜릿팩토리", image: "/illustrations/chocolate.png", top: "10%", left: "60%" },
+    { id: "garam-arthall", name: "가람아트홀", image: "/illustrations/garam.png", top: "85%", left: "15%" },
+    { id: "gamman-culture", name: "감만창의문화촌", image: "/illustrations/gamman.png", top: "90%", left: "70%" }, // 💡 ID를 gamman-culture로 통일
+    { id: "namgu-foundation", name: "부산남구문화재단", image: "/illustrations/bncf.png", top: "30%", left: "85%" }, // 💡 ID를 namgu-foundation으로 통일
+    { id: "uam-artnarae", name: "우암아트나래", image: "/illustrations/uam.png", top: "68%", left: "10%" },
   ];
 
   // 💡 [6.3단계 핵심] totalPlaces 상수를 places 배열의 실제 원소 개수로 자동 동기화합니다.
@@ -88,7 +101,7 @@ export default function Home() {
   const [visitedPlaces, setVisitedPlaces] = useState<string[]>([]); 
   // 방문한 장소들의 ID를 저장하는 상태 변수. 초기값은 빈 배열로 설정.
   // python: visited_places = []
-  
+
   const [userId, setUserId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -102,7 +115,7 @@ export default function Home() {
       if (typeof window === 'undefined') return;
 
       // 1. 5단계에서 기기에 심어둔 사용자 고유 ID(UUID)를 가져옵니다.
-      const savedUserId = localStorage.getItem("namgu_user_id");
+      const savedUserId = getOrCreateUserId(); // 💡 안정화된 공통 유틸 함수 연동
       setUserId(savedUserId);
 
       // 2. 로컬 브라우저 저장소(localStorage)의 기존 방문 기록을 먼저 확보합니다.
@@ -149,11 +162,32 @@ export default function Home() {
   }, []); 
 
   const visitedCount = visitedPlaces.length;
-  // 💡 [6.3단계] totalPlaces가 0개일 경우를 대비해 나눗셈 안전 처리를 추가했습니다.
+  // 13개 장소에 연동되어 게이지가 약 7.69%씩 동적으로 상승합니다.
   const progress = totalPlaces > 0 ? (visitedCount / totalPlaces) * 100 : 0;
 
   return (
     <main className="min-h-screen bg-gray-100 p-6 relative text-black">
+      {/* 네오둥근모 웹폰트 및 도트용 애니메이션 전용 스타일 인젝트 */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff');
+        @font-face {
+          font-family: 'NeoDunggeunmo';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+        .font-pixel-title {
+          font-family: 'NeoDunggeunmo', monospace;
+        }
+        @keyframes customFloating {
+          0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+          50% { transform: translate(-50%, -50%) translateY(-6px); }
+        }
+        .animate-floating {
+          animation: customFloating 2.5s ease-in-out infinite;
+        }
+      `}} />
+
       <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-6">
         
         {/* 6.2단계 - 연동 디버깅 전용 상단 미니 뱃지 */}
@@ -173,15 +207,16 @@ export default function Home() {
         </div>
 
         {/* 제목 */}
-        <h1 className="text-3xl font-bold text-center mb-4 leading-tight">
+        <h1 className="text-2xl font-bold text-center mb-4 leading-tight font-pixel-title">
           나만의 남구 문화지도 완성하기
         </h1>
 
         {/* 설명 */}
-        <p className="text-gray-600 text-center mb-6 leading-relaxed">
-          문화시설 방문을 통해
+        <p className="text-gray-600 text-center mb-6 leading-relaxed font-pixel-title text-sm">
+          잠겨져 있는 장소에 방문해
           <br />
-          나만의 디지털 지도를 활성화해보세요.
+          맵을 활성화 해보자!
+          
         </p>
 
         {/* 지도 이미지 */}
@@ -201,19 +236,29 @@ export default function Home() {
             if (!visitedPlaces.includes(place.id)) return null;
 
             return (
-              <img
+              <div 
                 key={place.id}
-                src={place.image}
-                alt={place.id}
-                className="absolute w-16 h-16 object-contain animate-floating"
+                className="absolute flex flex-col items-center justify-center animate-floating"
                 style={{
                   top: place.top,
                   left: place.left,
+                  transform: "translate(-50%, -50%)", // 핀 정확도 정렬 보정
                 }}
-              />
+              >
+                <img
+                  src={place.image}
+                  alt={place.name}
+                  className="w-12 h-12 object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/illustrations/gallery.png";
+                  }}
+                />
+                <span className="text-[9px] bg-black/70 text-white px-1 rounded-sm mt-0.5 font-bold font-pixel-title block whitespace-nowrap">
+                  {place.name}
+                </span>
+              </div>
             );
           })}
-
         </div>
         
         {/* 진행률 텍스트 */}
@@ -231,7 +276,7 @@ export default function Home() {
         </div>
 
         {/* 방문 개수 */}
-        <p className="text-center text-gray-600">
+        <p className="text-center text-gray-600 font-pixel-title text-sm">
           {visitedCount} / {totalPlaces}개 방문
         </p>
       </div>

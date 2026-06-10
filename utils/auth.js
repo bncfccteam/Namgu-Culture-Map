@@ -1,4 +1,7 @@
-//UUID 생성 및 로컬 스토리지 검사 함수
+/*Authentication Helper(인증 헬퍼)는 사용자의 신원을 확인하고 권한을 부여하는 인증(Authentication) 과정을 
+자동화하거나 간소화해 주는 소프트웨어 도구 또는 기능을 의미*/
+
+// UUID 생성 및 로컬 스토리지 검사 함수
 export const getOrCreateUserId = () => {
   if (typeof window === 'undefined') return null;
 
