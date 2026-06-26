@@ -1,0 +1,6 @@
+{"timestamp":"00:00:01.263","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:15.026","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:15.072","source":"Browser","level":"LOG","message":"📱 [LocalStorage] 기존 사용자 ID 확인됨: 4df188cd-3010-40df-8251-ac4568bb5ad0"}
+{"timestamp":"00:00:16.586","source":"Browser","level":"LOG","message":"📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다."}
+{"timestamp":"00:01:18.809","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:01:19.659","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
