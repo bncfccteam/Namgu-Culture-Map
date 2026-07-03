@@ -53,7 +53,7 @@ const getSupabaseInstance = async ()=>{
         supabaseInstance = createClientFn(finalUrl, finalKey);
     }
     return supabaseInstance;
-}; // 💡 [구문 복원 완료] 손실되었던 getSupabaseInstance 함수 마감 중괄호 복구!
+};
 /**
  * 사용자의 고유 UUID를 브라우저에서 가져오거나 새로 생성하여 
  * Supabase 'users' 테이블에 최초로 등록하는 내부 헬퍼 함수
@@ -139,8 +139,8 @@ function VisitPage({ params }) {
             name: "미우서재",
             image: "/illustrations/miu.png"
         },
-        "chocolate-factory": {
-            name: "초콜릿팩토리",
+        "sunflower-theater": {
+            name: "해바라기소극장",
             image: "/illustrations/chocolate.png"
         },
         "garam-arthall": {

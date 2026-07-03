@@ -49,7 +49,7 @@ const getSupabaseInstance = async () => {
     supabaseInstance = createClientFn(finalUrl, finalKey);
   }
   return supabaseInstance;
-}; // 💡 [구문 복원 완료] 손실되었던 getSupabaseInstance 함수 마감 중괄호 복구!
+}; 
 
 /**
  * 사용자의 고유 UUID를 브라우저에서 가져오거나 새로 생성하여 
@@ -126,7 +126,7 @@ export default function VisitPage({ params }: VisitPageProps) {
     "namgu-library": { name: "남구도서관", image: "/illustrations/namgu-library.png" },
     "gogossing-job": { name: "청년창조발전소고고씽Job", image: "/illustrations/gogossing.png" },
     "miu-study": { name: "미우서재", image: "/illustrations/miu.png" },
-    "chocolate-factory": { name: "초콜릿팩토리", image: "/illustrations/chocolate.png" },
+    "sunflower-theater": { name: "해바라기소극장", image: "/illustrations/chocolate.png" },
     "garam-arthall": { name: "가람아트홀", image: "/illustrations/garam.png" },
     "gamman-culture": { name: "감만창의문화촌", image: "/illustrations/gamman.png" },
     "namgu-foundation": { name: "부산남구문화재단", image: "/illustrations/bncf.png" },
