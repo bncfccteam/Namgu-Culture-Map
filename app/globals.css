@@ -3,13 +3,13 @@
 /* 컴파일러 내부 @import 순서 꼬임 버그를 우회하기 위해 @font-face 방식으로 직접 정의 */
 @font-face {
   font-family: 'NeoDunggeunmo';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/NeoDunggeunmo.woff') format('woff');
+  src: url('/fonts/neodgm.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Galmuri11';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/Galmuri11.woff') format('woff');
+  src: url('/fonts/Galmuri11.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -49,11 +49,17 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Galmuri11', Arial, sans-serif;
+  font-family: 'Galmuri11', sans-serif;
 }
 
-.font-pixel-title {
+/* .font-neodunggeunmo {
   font-family: 'NeoDunggeunmo', sans-serif;
+} */
+
+.font-neodunggeunmo {
+  font-family: 'NeoDunggeunmo' !important;
+}
+
+.font-galmuri {
+  font-family: 'Galmuri11', sans-serif;
 }

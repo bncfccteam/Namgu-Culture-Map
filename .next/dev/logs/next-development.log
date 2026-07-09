@@ -1,6 +1,161 @@
-{"timestamp":"00:00:01.863","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:31.065","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:32.954","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
-{"timestamp":"00:00:42.549","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:42.602","source":"Browser","level":"LOG","message":"📱 [LocalStorage] 기존 사용자 ID 확인됨: 4df188cd-3010-40df-8251-ac4568bb5ad0"}
-{"timestamp":"00:00:42.890","source":"Browser","level":"LOG","message":"📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다."}
+{"timestamp":"00:00:01.520","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:01.522","source":"Server","level":"WARN","message":"⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from \"192.168.110.9\".\nCross-origin access to Next.js dev resources is blocked by default for safety.\n\nTo allow this host in development, add it to \"allowedDevOrigins\" in next.config.js and restart the dev server:\n\n// next.config.js\nmodule.exports = {\n  allowedDevOrigins: ['192.168.110.9'],\n}\n\nRead more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins"}
+{"timestamp":"00:00:01.910","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:03.540","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:00:07.275","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:07.615","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:00:12.179","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:12.454","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:00:47.319","source":"Server","level":"ERROR","message":"[browser] \"\\u001b[31m⨯ unhandledRejection: NetworkError: A network error occurred.\\u001b[39m\\n\\u001b[31m\\u001b[39m\""}
+{"timestamp":"00:00:47.320","source":"Browser","level":"ERROR","message":"\u001b[31m⨯ unhandledRejection: NetworkError: A network error occurred.\u001b[39m\n\u001b[31m\u001b[39m"}
+{"timestamp":"00:00:47.320","source":"Browser","level":"ERROR","message":"unhandledRejection: NetworkError: A network error occurred."}
+{"timestamp":"00:03:12.991","source":"Server","level":"LOG","message":"✓ Compiled in 476ms"}
+{"timestamp":"00:03:30.290","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:03:31.580","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:03:50.366","source":"Server","level":"LOG","message":"✓ Compiled in 37ms"}
+{"timestamp":"00:03:54.278","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:03:54.908","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:04:09.464","source":"Server","level":"LOG","message":"✓ Compiled in 201ms"}
+{"timestamp":"00:04:10.781","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:04:11.054","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:05:05.532","source":"Server","level":"LOG","message":"✓ Compiled in 37ms"}
+{"timestamp":"00:05:30.314","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"00:05:38.691","source":"Server","level":"ERROR","message":"⨯ ./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:05:38.929","source":"Server","level":"ERROR","message":"⨯ ./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:05:38.957","source":"Browser","level":"ERROR","message":"./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]"}
+{"timestamp":"00:05:38.963","source":"Server","level":"ERROR","message":"[browser] \"./app/page.tsx:254:1\\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\\n  252 |\\n  253 |\\n> 254 | }\\n      | ^\\n\\nParsing ecmascript source code failed\\n\\nImport traces:\\n  Client Component Browser:\\n    ./app/page.tsx [Client Component Browser]\\n    ./app/page.tsx [Server Component]\\n\\n  Client Component SSR:\\n    ./app/page.tsx [Client Component SSR]\\n    ./app/page.tsx [Server Component]\" \"\""}
+{"timestamp":"00:05:38.963","source":"Browser","level":"ERROR","message":"./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component] \"\""}
+{"timestamp":"00:05:38.971","source":"Server","level":"ERROR","message":"⨯ ./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:05:39.083","source":"Browser","level":"ERROR","message":"uncaughtError: Error: ./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:05:39.088","source":"Server","level":"ERROR","message":"[browser] \"\\u001b[31mUncaught Error: ./app/page.tsx:254:1\\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\\n  252 |\\n  253 |\\n> 254 | }\\n      | ^\\n\\nParsing ecmascript source code failed\\n\\nImport traces:\\n  Client Component Browser:\\n    ./app/page.tsx [Client Component Browser]\\n    ./app/page.tsx [Server Component]\\n\\n  Client Component SSR:\\n    ./app/page.tsx [Client Component SSR]\\n    ./app/page.tsx [Server Component]\\n\\n\\u001b[39m\\n\\u001b[31m    at <unknown> (Error: ./app/page.tsx:254:1)\\n    at <unknown> (Error: (./app/page.tsx:254:1)\\u001b[39m\""}
+{"timestamp":"00:05:39.088","source":"Browser","level":"ERROR","message":"\u001b[31mUncaught Error: ./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]\n\n\u001b[39m\n\u001b[31m    at <unknown> (Error: ./app/page.tsx:254:1)\n    at <unknown> (Error: (./app/page.tsx:254:1)\u001b[39m"}
+{"timestamp":"00:05:39.117","source":"Browser","level":"ERROR","message":"./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]"}
+{"timestamp":"00:05:39.118","source":"Server","level":"ERROR","message":"[browser] \"./app/page.tsx:254:1\\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\\n  252 |\\n  253 |\\n> 254 | }\\n      | ^\\n\\nParsing ecmascript source code failed\\n\\nImport traces:\\n  Client Component Browser:\\n    ./app/page.tsx [Client Component Browser]\\n    ./app/page.tsx [Server Component]\\n\\n  Client Component SSR:\\n    ./app/page.tsx [Client Component SSR]\\n    ./app/page.tsx [Server Component]\" \"\""}
+{"timestamp":"00:05:39.118","source":"Browser","level":"ERROR","message":"./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component] \"\""}
+{"timestamp":"00:05:39.171","source":"Server","level":"ERROR","message":"[browser] \"./app/page.tsx:254:1\\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\\n  252 |\\n  253 |\\n> 254 | }\\n      | ^\\n\\nParsing ecmascript source code failed\\n\\nImport traces:\\n  Client Component Browser:\\n    ./app/page.tsx [Client Component Browser]\\n    ./app/page.tsx [Server Component]\\n\\n  Client Component SSR:\\n    ./app/page.tsx [Client Component SSR]\\n    ./app/page.tsx [Server Component]\" \"\""}
+{"timestamp":"00:05:39.172","source":"Browser","level":"ERROR","message":"./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component] \"\""}
+{"timestamp":"00:05:39.172","source":"Browser","level":"ERROR","message":"./app/page.tsx:254:1\nUnexpected token. Did you mean `{'}'}` or `&rbrace;`?\n  252 |\n  253 |\n> 254 | }\n      | ^\n\nParsing ecmascript source code failed\n\nImport traces:\n  Client Component Browser:\n    ./app/page.tsx [Client Component Browser]\n    ./app/page.tsx [Server Component]\n\n  Client Component SSR:\n    ./app/page.tsx [Client Component SSR]\n    ./app/page.tsx [Server Component]"}
+{"timestamp":"00:06:01.185","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:06:02.191","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:06:11.841","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"00:10:10.998","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"00:10:26.308","source":"Server","level":"LOG","message":"✓ Compiled in 29ms"}
+{"timestamp":"00:11:08.407","source":"Server","level":"LOG","message":"✓ Compiled in 118ms"}
+{"timestamp":"00:21:54.219","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"00:22:00.495","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:22:02.006","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:25:28.917","source":"Server","level":"LOG","message":"✓ Compiled in 29ms"}
+{"timestamp":"00:28:56.821","source":"Server","level":"LOG","message":"✓ Compiled in 180ms"}
+{"timestamp":"00:29:57.659","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:29:59.543","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:30:16.951","source":"Server","level":"LOG","message":"✓ Compiled in 51ms"}
+{"timestamp":"00:31:09.808","source":"Server","level":"LOG","message":"✓ Compiled in 30ms"}
+{"timestamp":"00:31:21.116","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"00:33:49.720","source":"Server","level":"LOG","message":"✓ Compiled in 51ms"}
+{"timestamp":"00:34:14.055","source":"Server","level":"LOG","message":"✓ Compiled in 53ms"}
+{"timestamp":"00:37:13.380","source":"Server","level":"LOG","message":"✓ Compiled in 48ms"}
+{"timestamp":"00:37:28.872","source":"Server","level":"LOG","message":"✓ Compiled in 29ms"}
+{"timestamp":"00:37:44.256","source":"Server","level":"LOG","message":"✓ Compiled in 23ms"}
+{"timestamp":"00:37:55.857","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"00:38:30.094","source":"Server","level":"LOG","message":"✓ Compiled in 25ms"}
+{"timestamp":"00:40:39.739","source":"Server","level":"LOG","message":"✓ Compiled in 68ms"}
+{"timestamp":"00:40:47.175","source":"Server","level":"LOG","message":"✓ Compiled in 27ms"}
+{"timestamp":"00:41:28.884","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:41:30.017","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:42:08.004","source":"Server","level":"LOG","message":"✓ Compiled in 39ms"}
+{"timestamp":"00:42:30.034","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"00:42:35.413","source":"Server","level":"LOG","message":"✓ Compiled in 27ms"}
+{"timestamp":"00:46:15.132","source":"Server","level":"LOG","message":"✓ Compiled in 30ms"}
+{"timestamp":"00:46:43.679","source":"Server","level":"LOG","message":"✓ Compiled in 22ms"}
+{"timestamp":"00:47:08.945","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"00:47:34.644","source":"Server","level":"LOG","message":"✓ Compiled in 20ms"}
+{"timestamp":"00:47:42.781","source":"Server","level":"LOG","message":"✓ Compiled in 27ms"}
+{"timestamp":"00:47:47.476","source":"Server","level":"LOG","message":"✓ Compiled in 20ms"}
+{"timestamp":"00:48:25.931","source":"Server","level":"LOG","message":"✓ Compiled in 30ms"}
+{"timestamp":"00:48:52.050","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"00:48:58.528","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"00:49:16.953","source":"Server","level":"LOG","message":"✓ Compiled in 23ms"}
+{"timestamp":"00:49:32.332","source":"Server","level":"LOG","message":"✓ Compiled in 19ms"}
+{"timestamp":"00:55:15.525","source":"Server","level":"LOG","message":"✓ Compiled in 49ms"}
+{"timestamp":"00:56:04.919","source":"Server","level":"LOG","message":"✓ Compiled in 32ms"}
+{"timestamp":"00:56:26.712","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"00:56:43.453","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"00:56:51.645","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"00:57:36.969","source":"Server","level":"LOG","message":"✓ Compiled in 25ms"}
+{"timestamp":"00:59:04.803","source":"Server","level":"LOG","message":"✓ Compiled in 74ms"}
+{"timestamp":"00:59:09.448","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
+{"timestamp":"01:00:11.526","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"01:00:30.499","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"01:00:58.822","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:01:01.536","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:04:00.627","source":"Server","level":"LOG","message":"✓ Compiled in 21ms"}
+{"timestamp":"01:04:28.072","source":"Server","level":"LOG","message":"✓ Compiled in 20ms"}
+{"timestamp":"01:04:44.229","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"01:04:57.716","source":"Server","level":"LOG","message":"✓ Compiled in 33ms"}
+{"timestamp":"01:05:11.660","source":"Server","level":"LOG","message":"✓ Compiled in 20ms"}
+{"timestamp":"01:05:20.963","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"01:05:33.470","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"01:05:39.542","source":"Server","level":"LOG","message":"✓ Compiled in 25ms"}
+{"timestamp":"01:14:23.581","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"01:15:16.047","source":"Server","level":"LOG","message":"✓ Compiled in 42ms"}
+{"timestamp":"01:15:27.908","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:15:29.213","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:15:29.526","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:15:30.187","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:15:30.374","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:15:30.714","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:15:31.285","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:15:31.546","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:15:57.462","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"01:16:05.235","source":"Server","level":"LOG","message":"✓ Compiled in 28ms"}
+{"timestamp":"01:16:41.540","source":"Server","level":"LOG","message":"✓ Compiled in 39ms"}
+{"timestamp":"01:16:44.829","source":"Server","level":"LOG","message":"✓ Compiled in 45ms"}
+{"timestamp":"01:16:51.573","source":"Server","level":"LOG","message":"✓ Compiled in 45ms"}
+{"timestamp":"01:16:56.557","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
+{"timestamp":"01:18:14.615","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"01:18:31.009","source":"Server","level":"LOG","message":"✓ Compiled in 25ms"}
+{"timestamp":"01:18:33.078","source":"Server","level":"LOG","message":"✓ Compiled in 22ms"}
+{"timestamp":"01:20:29.433","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:20:30.322","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:20:35.892","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"01:26:56.396","source":"Server","level":"LOG","message":"✓ Compiled in 41ms"}
+{"timestamp":"01:27:00.870","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:02.372","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:02.916","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:27:04.605","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:04.817","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:27:05.859","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:06.064","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:27:07.122","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:07.336","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:27:08.300","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:08.857","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:27:33.596","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"01:27:54.435","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"01:27:55.981","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:27:56.572","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:28:04.986","source":"Server","level":"LOG","message":"✓ Compiled in 33ms"}
+{"timestamp":"01:28:06.679","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:28:06.897","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:30:05.765","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"01:31:25.332","source":"Server","level":"LOG","message":"✓ Compiled in 31ms"}
+{"timestamp":"01:31:44.400","source":"Server","level":"LOG","message":"✓ Compiled in 27ms"}
+{"timestamp":"01:31:47.456","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"01:44:20.919","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:44:22.578","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:47:21.656","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:47:22.211","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:52:41.394","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:52:42.743","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:52:43.416","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"01:52:43.631","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"01:59:08.745","source":"Server","level":"LOG","message":"✓ Compiled in 36ms"}
+{"timestamp":"01:59:14.546","source":"Server","level":"LOG","message":"✓ Compiled in 31ms"}
+{"timestamp":"02:00:28.923","source":"Server","level":"LOG","message":"✓ Compiled in 35ms"}
+{"timestamp":"02:03:34.946","source":"Server","level":"LOG","message":"✓ Compiled in 29ms"}
+{"timestamp":"02:04:09.798","source":"Server","level":"LOG","message":"✓ Compiled in 26ms"}
+{"timestamp":"02:05:55.922","source":"Server","level":"LOG","message":"✓ Compiled in 39ms"}
+{"timestamp":"02:06:17.542","source":"Server","level":"LOG","message":"✓ Compiled in 35ms"}
+{"timestamp":"02:06:43.628","source":"Server","level":"LOG","message":"✓ Compiled in 29ms"}
+{"timestamp":"02:07:38.513","source":"Server","level":"LOG","message":"✓ Compiled in 24ms"}
+{"timestamp":"02:35:06.272","source":"Server","level":"LOG","message":"✓ Compiled in 125ms"}

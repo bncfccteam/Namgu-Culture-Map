@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react";
 import { places } from "@/data/places";
 
+import MapHeader from "@/components/MapHeader";
+import MapCanvas from "@/components/MapCanvas";
+import ProgressHUD from "@/components/ProgressHUD";
+
 let supabaseInstance: any = null;
 
 /**
@@ -147,125 +151,68 @@ export default function Home() {
     syncAndFetchVisits();
   }, []); 
 
+
+
   const visitedCount = visitedPlaces.length;
   // 13개 장소에 연동되어 게이지가 약 7.69%씩 동적으로 상승합니다.
   const progress = totalPlaces > 0 ? (visitedCount / totalPlaces) * 100 : 0;
 
+
+
   return (
-    <main className="min-h-screen bg-gray-100 p-6 relative text-black">
-      {/* 네오둥근모 웹폰트 및 도트용 애니메이션 전용 스타일 인젝트 */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff');
-        @font-face {
-          font-family: 'NeoDunggeunmo';
-          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff') format('woff');
-          font-weight: normal;
-          font-style: normal;
-        }
-        .font-pixel-title {
-          font-family: 'NeoDunggeunmo', monospace;
-        }
-        @keyframes customFloating {
-          0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-          50% { transform: translate(-50%, -50%) translateY(-6px); }
-        }
-        .animate-floating {
-          animation: customFloating 2.5s ease-in-out infinite;
-        }
-      `}} />
+    <main className="min-h-screen bg-[#0077b6] flex justify-center">
+      <div
+      className="
+        relative
+        w-full
+        max-w-[480px]
+        h-screen
+        overflow-hidden
+        bg-[#0077b6]
+      "
+      >
+        {/* 헤더 */}
+        <MapHeader
+          visitedCount={visitedCount}
+          totalCount={totalPlaces}
+        />
 
-      <div className="max-w-md mx-auto bg-white rounded-3xl shadow-lg p-6">
+        {/* 고정 안개 */}
+        <img
+          src="/img/top-fog.png"
+          alt=""
+          className="
+            absolute
+            top-0
+            left-0
+            w-full
+            z-40
+            pointer-events-none
+          "
+        />
         
-        {/* 6.2단계 - 연동 디버깅 전용 상단 미니 뱃지 */}
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-[10px] text-gray-400 font-mono">
-            ID: {userId ? `${userId.substring(0, 8)}...` : "발급 안 됨"}
-          </span>
-          {isLoading ? (
-            <span className="text-[10px] px-2 py-0.5 bg-yellow-100 text-yellow-700 rounded-full animate-pulse font-medium">
-              동기화 중
-            </span>
-          ) : (
-            <span className="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-medium">
-              서버 연결됨
-            </span>
-          )}
+        {/* 스크롤 영역 */}
+        <div
+          className="
+            h-full
+            overflow-y-auto
+          "
+        >
+          <MapCanvas
+            visitedPlaces={visitedPlaces}
+          />
         </div>
-
-        {/* 제목 */}
-        <h1 className="text-2xl font-bold text-center mb-4 leading-tight font-pixel-title">
-          나만의 남구 문화지도 완성하기
-        </h1>
-
-        {/* 설명 */}
-        <p className="text-gray-600 text-center mb-6 leading-relaxed font-pixel-title text-sm">
-          잠겨져 있는 장소에 방문해
-          <br />
-          맵을 활성화 해보자!
           
-        </p>
-
-        {/* 지도 이미지 */}
-        <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-200">
-
-          {/* 전체 지도 */}
-          {/* 💡 [빌드 최적화] 컴파일러 및 샌드박스 빌드 의존성 에러(next/image 미해결)를 원천 차단하기 위해 
-              표준 <img> 태그 형식을 사용합니다. 로컬 환경에서 Next.js <Image> 컴포넌트로 다시 사용하시려면 
-              상단에 'import Image from "next/image"'를 복구하시고 아래 코드를 그대로 바꾸시면 됩니다. */}
-          <img
-            src="/img/map-placeholder.png"
-            alt="문화지도"
-            className="w-full h-full object-cover opacity-50"
-          />
-
-          {places.map((place) => {
-            if (!visitedPlaces.includes(place.id)) return null;
-
-            return (
-              <div 
-                key={place.id}
-                className="absolute flex flex-col items-center justify-center animate-floating"
-                style={{
-                  top: place.top,
-                  left: place.left,
-                  transform: "translate(-50%, -50%)", // 핀 정확도 정렬 보정
-                }}
-              >
-                <img
-                  src={place.image}
-                  alt={place.name}
-                  className="w-12 h-12 object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/illustrations/gallery.png";
-                  }}
-                />
-                <span className="text-[9px] bg-black/70 text-white px-1 rounded-sm mt-0.5 font-bold font-pixel-title block whitespace-nowrap">
-                  {place.name}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-        
-        {/* 진행률 텍스트 */}
-        <div className="mb-2 flex justify-between text-sm font-medium">
-          <span>진행률</span>
-          <span>{Math.round(progress)}%</span>
-        </div>
-
         {/* 진행률 바 */}
-        <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden mb-3">
-          <div
-            className="h-full bg-green-500 transition-all duration-500"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        <ProgressHUD
+          visitedCount={visitedCount}
+          totalCount={totalPlaces}
+        />
 
-        {/* 방문 개수 */}
-        <p className="text-center text-gray-600 font-pixel-title text-sm">
-          {visitedCount} / {totalPlaces}개 방문
-        </p>
       </div>
     </main>
   );
+
+
+
 }
