@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,64633,t=>{"use strict";var e=t.i(43476),i=t.i(71645);t.s(["default",0,function(){let[t,n]=(0,i.useState)("초기");return(0,e.jsxs)("main",{children:[(0,e.jsx)("div",{children:t}),(0,e.jsx)("button",{onClick:()=>{alert("클릭"),n("변경")},children:"테스트"})]})}])}]);

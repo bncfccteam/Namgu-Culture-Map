@@ -221,7 +221,7 @@ export default function VisitPage() {
         setDbStatus("ERROR: " + errorMessage);   ////////////////////테스트0709
         
         console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", errorMessage);
-        setDbStatus("error");
+
         
         // 서버 장애나 일시적 통신 무산 시에도, 사용자의 온디바이스(localStorage) 저장을 수행하여 이탈을 방지합니다.
         if (placeId) {
