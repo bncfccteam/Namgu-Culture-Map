@@ -6,7 +6,7 @@ export const places = [
     { id: "daedonggol-culture", name: "대동골문화센터", zIndex: 10, mapImage: "/buildings/daedonggol.png", detailImage: "/buildings/daedonggol@2x.png", 
         description: "...", 
         naverMap:"https://map.naver.com/p/entry/place/1142639130?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081429%26locale%3Dko%26svcName%3Dmap_pcv5",
-        top: "27.28%", left: "41.32%"},
+        top: "27.28%", left: "42%"},
     { id: "haeparangil-info", name: "해파랑길관광안내소", zIndex: 20, mapImage: "/buildings/haeparangil.png", detailImage: "/buildings/haeparangil@2x.png", 
         description: "...", 
         naverMap:"https://map.naver.com/p/entry/place/33774450?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081437%26locale%3Dko%26svcName%3Dmap_pcv5",
@@ -46,7 +46,7 @@ export const places = [
     { id: "namgu-foundation", name: "부산남구문화재단", zIndex: 20, mapImage: "/buildings/bncf.png", detailImage: "/buildings/bncf@2x.png", 
         description: "...", 
         naverMap:"https://map.naver.com/p/entry/place/2041962957?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081430%26locale%3Dko%26svcName%3Dmap_pcv5",
-        top: "41.38%", left: "34.86%" }, // 
+        top: "41.38%", left: "34.3%" }, // 
     { id: "uam-artnarae", name: "우암아트나래", zIndex: 30, mapImage: "/buildings/uam.png", detailImage: "/buildings/uam@2x.png", 
         description: "...", 
         naverMap:"https://map.naver.com/p/entry/address/3AHDEm,2z7LYM,%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%9A%B0%EC%95%94%EB%8F%99%20121-6?c=12.00,0,0,2,dh",

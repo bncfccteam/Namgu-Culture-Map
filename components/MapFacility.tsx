@@ -1,24 +1,36 @@
 type Props = {
+  id : string;
   name: string;
   image: string;
   top: string;
   left: string;
   unlocked: boolean;
+
+  zIndex: number;
 };
 
 export default function MapFacility({
+  id,
   name,
   image,
   top,
   left,
   unlocked,
+  zIndex,
+
 }: Props) {
   return (
     <div
-      className="absolute z-20 flex flex-col items-center"
+      className="
+        absolute
+        flex
+        flex-col
+        items-center
+        cursor-pointer "
       style={{
         left,
         top,
+        zIndex,
         transform: "translate(-50%, -50%)",
       }}
     >
@@ -39,16 +51,16 @@ export default function MapFacility({
             items-center
             justify-center
             font-galmuri
-            z-[999]
+            z-20
             pointer-events-none
             ${
               unlocked
-                ? "bg-yellow-200 text-black"
-                : "bg-gray-200 text-black"
+                ? "bg-white text-black"
+                : "bg-gray-500 text-black"
             }
           `}
           style={{
-            top: unlocked ? "-10px" : "-26px",
+            top: unlocked ? "-10px" : "-20px",
           }}
         >
           {name}
@@ -60,7 +72,7 @@ export default function MapFacility({
           <img
             src={image}
             alt={name}
-            className="w-16 h-16 object-contain"
+            className="w-16 h-16 object-contain relative z-10"
           />
         ) : (
 

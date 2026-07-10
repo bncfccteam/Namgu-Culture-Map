@@ -1,6 +1,9 @@
 'use client';
+console.log("컴포넌트 렌더"); //////////////0709테스트
 
-import { use, useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
 // ----------------------------------------------------
 // [빌드/컴파일 에러를 완벽히 해결하는 하이브리드 로더]
@@ -81,7 +84,6 @@ const initializeUserInPage = async (supabase: any) => {
         if (error) throw error;
 
         localStorage.setItem(STORAGE_KEY, userId);
-        console.log('🎉 [Supabase] 새 사용자 고유 ID 등록 완료:', userId);
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
         console.error('🚨 [Supabase] 사용자 등록 중 오류 발생:', errorMessage);
@@ -90,31 +92,42 @@ const initializeUserInPage = async (supabase: any) => {
     } else {
       localStorage.setItem(STORAGE_KEY, userId);
     }
-  } else {
-    console.log('📱 [LocalStorage] 기존 사용자 ID 확인됨:', userId);
   }
 
   return userId;
 };
 
-//////////////////////////////////////////////////////////////////////////////////
-type VisitPageProps = {
-  params: Promise<{
-    placeId: string;
-  }>;
-};
 
-export default function VisitPage({ params }: VisitPageProps) {
-  const resolvedParams = use(params);
-  let placeId = resolvedParams?.placeId;
+export default function VisitPage() {
 
-  if (!placeId && typeof window !== 'undefined') {
-    const paths = window.location.pathname.split('/');
-    placeId = paths[paths.length - 1];
-  }
+   console.log("컴포넌트 렌더");
+
+  const params = useParams();
+
+  const placeId =
+    typeof params.placeId === "string"
+      ? params.placeId
+      : "";
+
+/////////////////////////////////////////기존 코드(~0709)////////////////////////////////////////////////
+// type VisitPageProps = {
+//   params: Promise<{
+//     placeId: string;
+//   }>;
+// };                                           
+
+// export default function VisitPage({ params }: VisitPageProps) {      기존 코드(~0709)
+//   const resolvedParams = use(params);
+//   let placeId = resolvedParams?.placeId;
+
+  // if (!placeId && typeof window !== 'undefined') {
+  //   const paths = window.location.pathname.split('/');     
+  //   placeId = paths[paths.length - 1];
+  // }
+  /////////////////////////////////////////////기존 코드(~0709)////////////////////////////////////////
 
   const [isAnimating, setIsAnimating] = useState(true);
-  const [dbStatus, setDbStatus] = useState<"loading" | "success" | "error">("loading");
+  const [dbStatus, setDbStatus] =  useState("loading");
 
   // 13개 확정 장소 매핑 테이블
   const placeData: Record<string, { name: string; image: string }> = {
@@ -134,8 +147,20 @@ export default function VisitPage({ params }: VisitPageProps) {
   };
 
   useEffect(() => {
+
+    alert("useEffect실행");  //////////////////////테스트0709
+    setDbStatus("useEffect시작");  //////////////////////테스트0709
+
     const handleRegisterAndVisit = async () => {
-      if (!placeId) return;
+
+      setDbStatus("함수시작"); ///////////////////테스트0709
+
+      if (!placeId) {
+        setDbStatus("placeId없음");    //////////////////테스트0709
+        return;
+      }
+
+      // if (!placeId) return;  (기존코드~0709)
 
       try {
         // 1. Supabase 인스턴스 안전하게 로드
@@ -170,6 +195,7 @@ export default function VisitPage({ params }: VisitPageProps) {
         }
 
         // 4. 로컬 저장소(localStorage)에도 방문 장소 목록을 동기화하여 하이브리드 보존 처리
+        setDbStatus("localStorage전"); ///////////////테스트0709
         const saved = localStorage.getItem("visitedPlaces");
         const visitedPlaces: string[] = saved ? JSON.parse(saved) : [];
 
@@ -182,10 +208,18 @@ export default function VisitPage({ params }: VisitPageProps) {
           );
         }
 
-        setDbStatus("success");
+        setDbStatus(
+          "saved:" +
+          localStorage.getItem("visitedPlaces")
+        );
+
+
 
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
+
+        setDbStatus("ERROR: " + errorMessage);   ////////////////////테스트0709
+        
         console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", errorMessage);
         setDbStatus("error");
         
@@ -215,115 +249,191 @@ export default function VisitPage({ params }: VisitPageProps) {
 
   const currentPlace = placeData[placeId || ""];
 
+
+
   return (
-    // 전체 화면: flex와 h-screen을 통해 상하 화면을 꽉 채우고 스크롤을 방지합니다.
-    <main className="flex h-screen flex-col bg-gradient-to-b from-[#5ba6de] to-[#2c5a9e] text-white overflow-hidden relative">
-      <style dangerouslySetInnerHTML={{__html: `
-        @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff');
-        @font-face {
-          font-family: 'NeoDunggeunmo';
-          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff') format('woff');
-          font-weight: normal;
-          font-style: normal;
-        }
-        .font-pixel-title {
-          font-family: 'NeoDunggeunmo', monospace;
-        }
-        @keyframes landingAnimate {
-          0% { transform: scale(0.3) translateY(-100px); opacity: 0; }
-          70% { transform: scale(1.1) translateY(10px); }
-          100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        .animate-retroLanded {
-          animation: landingAnimate 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-      `}} />
+    <main
+      style={{
+        padding: 20,
+        background: "#111",
+        color: "#fff",
+        minHeight: "100vh",
+      }}
+    >
+
+      <h1 style={{ color: "red", fontSize: "40px" }}>
+        0709 TEST ABC XYZ
+      </h1>
+
+      <button
+        onClick={() => {
+          alert("클릭됨");
+          setDbStatus("버튼클릭");
+        }}
+      >
+        테스트버튼
+      </button>
+
+      <h1>VISIT DEBUG</h1>
+
+      <div>
+        랜덤값:
+        {Math.random()}
+      </div>
+
+      <div>placeId: [{placeId}]</div>
+
+      <div>dbStatus: [{dbStatus}]</div>
+
+      <div>
+        localStorage:
+        {typeof window !== "undefined"
+          ? localStorage.getItem("visitedPlaces")
+          : "SSR"}
+      </div>
+
+      <a href="/">메인으로</a>
+
+      <div
+        style={{
+          position: "fixed",
+          top: 50,
+          left: 10,
+          zIndex: 999999,
+          background: "black",
+          color: "lime",
+          padding: 10,
+        }}
+      >
+        {dbStatus}
+      </div>
+
       
-      {/* ----------------------------------------------------
-          [상단 공간: 하늘 및 바다 필드 영역]
-          - h-[55%]: 화면의 상단 절반 이상을 차지하며, 파도 GIF와 건물 일러스트가 돋보이게 만듭니다.
-         ---------------------------------------------------- */}
-      <div className="w-full h-[55%] relative flex flex-col items-center justify-end overflow-hidden pb-0">
-        
-        {/* 바다 배경 파도 GIF (무한 루프) */}
-        <img
-          src="/img/pixel-ocean.gif"
-          alt="남구 픽셀 바다"
-          className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
-        />
-
-        {/* 주인공: 문화시설 픽셀 이미지 렌더링 구역 */}
-        {currentPlace ? (
-          <div className="relative flex flex-col items-center z-10">
-            <img
-              src={currentPlace.image}
-              alt={currentPlace.name}
-              // [애니메이션 포인트] animate-retroLanded 클래스로 0.3초만에 쿵 안착합니다.
-              // transform-origin-bottom을 주어 확대/축소의 기준점을 '바닥'으로 고정해 지면에서 솟구치는 느낌을 살립니다.
-              className="w-40 h-40 object-contain origin-bottom animate-retroLanded"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "/illustrations/gallery.png";
-              }}
-            />
-            
-            {/* [디테일 포인트: 픽셀 도트 음영 그림자]
-                - 건물 바로 아래에 어두운 도트 질감의 그림자를 깔아 지면과의 접착감을 극대화합니다.  */}
-            <div className="w-32 h-3 bg-black/40 rounded-full blur-[2px] mt-2 mx-auto" />
-          </div>
-        ) : (
-          <div className="relative flex flex-col items-center z-10">
-            <div className="w-24 h-24 bg-white/10 rounded-full border border-white/20 animate-pulse flex items-center justify-center font-pixel-title text-xs text-white/50">
-              인증 준비중
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* ----------------------------------------------------
-          [중앙 공간: 2D 잔디 블록 지면 단면 선]
-          - 상단 하늘과 하단 지하를 명확히 구분 짓는 고전 게임 스타일의 대지 선입니다.
-         ---------------------------------------------------- */}
-      <div className="w-full h-6 relative z-20 flex flex-col">
-        {/* 상단 잔디 윗면 (연두색 픽셀 레이어) */}
-        <div className="w-full h-2 bg-[#88cc44] border-b-2 border-black/20" />
-        {/* 하단 잔디 단면 (진초록색 픽셀 레이어) */}
-        <div className="w-full h-4 bg-[#55aa22]" />
-      </div>
-
-      {/* ----------------------------------------------------
-          [하단 공간: 지하 불투명 메뉴창 영역]
-          - h-[45%]: 도트 다크 그레이 배경으로 글자들의 명도와 시인성을 강력하게 잡아줍니다.
-         ---------------------------------------------------- */}
-      <div className="w-full h-[45%] bg-[#2a2d32] border-t-4 border-black flex flex-col items-center justify-between py-8 px-6 z-10 shadow-[inset_0_8px_0_rgba(0,0,0,0.3)]">
-        
-        {/* 텍스트 위계 및 정렬 영역 */}
-        <div className="flex flex-col items-center text-center w-full mt-2">
-          {/* 1. 시설 이름 (NeoDunggeunmo 서체, 가장 크고 두껍게) */}
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-wider font-pixel-title drop-shadow-[0_4px_0_rgba(0,0,0,0.7)]">
-            {currentPlace ? currentPlace.name : "문화시설"}
-          </h1>
-          
-          {/* 2. 방문 완료! (시설명 바로 밑에 골드 컬러 포인트 배치) */}
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#ffd700] tracking-widest font-pixel-title mb-5">
-            방문 완료!
-          </h2>
-          
-          {/* 3. 안내 문구 (Galmuri11 기본 서체, 명도 쨍하게 유지) */}
-          <p className="text-sm sm:text-base text-gray-100 font-medium leading-relaxed max-w-xs break-keep font-pixel-title">
-            새로운 문화시설이 지도에 등록되었습니다.
-          </p>
-        </div>
-
-        {/* 지도로 확인하러 가기 액션 버튼 */}
-        <a
-          href="/"
-          // 픽셀 스타일과 어울리도록 그라데이션 대신 쨍한 골드 옐로우 톤의 레트로 버튼으로 가독성을 높였습니다.
-          className="px-8 py-3.5 bg-[#ffd700] hover:bg-yellow-400 text-black font-extrabold rounded-xl shadow-[0_5px_0_#9e7200] hover:translate-y-[2px] hover:shadow-[0_3px_0_#9e7200] active:translate-y-[5px] active:shadow-none transition-all duration-100 font-pixel-title text-base tracking-wide"
-        >
-          내 지도에서 확인하기
-        </a>
-
-      </div>
     </main>
   );
+
 }
+
+
+
+
+
+
+// UI부분 임시 주석처리 (0709)
+//   return (
+//     // 전체 화면: flex와 h-screen을 통해 상하 화면을 꽉 채우고 스크롤을 방지합니다.
+//     <main className="flex h-screen flex-col bg-gradient-to-b from-[#5ba6de] to-[#2c5a9e] text-white overflow-hidden relative">
+//       <style dangerouslySetInnerHTML={{__html: `
+//         @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff');
+//         @font-face {
+//           font-family: 'NeoDunggeunmo';
+//           src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/NeoDunggeunmo.woff') format('woff');
+//           font-weight: normal;
+//           font-style: normal;
+//         }
+//         .font-pixel-title {
+//           font-family: 'NeoDunggeunmo', monospace;
+//         }
+//         @keyframes landingAnimate {
+//           0% { transform: scale(0.3) translateY(-100px); opacity: 0; }
+//           70% { transform: scale(1.1) translateY(10px); }
+//           100% { transform: scale(1) translateY(0); opacity: 1; }
+//         }
+//         .animate-retroLanded {
+//           animation: landingAnimate 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+//         }
+//       `}} />
+
+
+
+      
+
+      
+//       {/* ----------------------------------------------------
+//           [상단 공간: 하늘 및 바다 필드 영역]
+//           - h-[55%]: 화면의 상단 절반 이상을 차지하며, 파도 GIF와 건물 일러스트가 돋보이게 만듭니다.
+//          ---------------------------------------------------- */}
+//       <div className="w-full h-[55%] relative flex flex-col items-center justify-end overflow-hidden pb-0">
+        
+//         {/* 바다 배경 파도 GIF (무한 루프) */}
+//         <img
+//           src="/img/pixel-ocean.gif"
+//           alt="남구 픽셀 바다"
+//           className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+//         />
+
+//         {/* 주인공: 문화시설 픽셀 이미지 렌더링 구역 */}
+//         {currentPlace ? (
+//           <div className="relative flex flex-col items-center z-10">
+//             <img
+//               src={currentPlace.image}
+//               alt={currentPlace.name}
+//               // [애니메이션 포인트] animate-retroLanded 클래스로 0.3초만에 쿵 안착합니다.
+//               // transform-origin-bottom을 주어 확대/축소의 기준점을 '바닥'으로 고정해 지면에서 솟구치는 느낌을 살립니다.
+//               className="w-40 h-40 object-contain origin-bottom animate-retroLanded"
+//               onError={(e) => {
+//                 (e.target as HTMLImageElement).src = "/illustrations/gallery.png";
+//               }}
+//             />
+            
+//             {/* [디테일 포인트: 픽셀 도트 음영 그림자]
+//                 - 건물 바로 아래에 어두운 도트 질감의 그림자를 깔아 지면과의 접착감을 극대화합니다.  */}
+//             <div className="w-32 h-3 bg-black/40 rounded-full blur-[2px] mt-2 mx-auto" />
+//           </div>
+//         ) : (
+//           <div className="relative flex flex-col items-center z-10">
+//             <div className="w-24 h-24 bg-white/10 rounded-full border border-white/20 animate-pulse flex items-center justify-center font-pixel-title text-xs text-white/50">
+//               인증 준비중
+//             </div>
+//           </div>
+//         )}
+//       </div>
+
+//       {/* ----------------------------------------------------
+//           [중앙 공간: 2D 잔디 블록 지면 단면 선]
+//           - 상단 하늘과 하단 지하를 명확히 구분 짓는 고전 게임 스타일의 대지 선입니다.
+//          ---------------------------------------------------- */}
+//       <div className="w-full h-6 relative z-20 flex flex-col">
+//         {/* 상단 잔디 윗면 (연두색 픽셀 레이어) */}
+//         <div className="w-full h-2 bg-[#88cc44] border-b-2 border-black/20" />
+//         {/* 하단 잔디 단면 (진초록색 픽셀 레이어) */}
+//         <div className="w-full h-4 bg-[#55aa22]" />
+//       </div>
+
+//       {/* ----------------------------------------------------
+//           [하단 공간: 지하 불투명 메뉴창 영역]
+//           - h-[45%]: 도트 다크 그레이 배경으로 글자들의 명도와 시인성을 강력하게 잡아줍니다.
+//          ---------------------------------------------------- */}
+//       <div className="w-full h-[45%] bg-[#2a2d32] border-t-4 border-black flex flex-col items-center justify-between py-8 px-6 z-10 shadow-[inset_0_8px_0_rgba(0,0,0,0.3)]">
+        
+//         {/* 텍스트 위계 및 정렬 영역 */}
+//         <div className="flex flex-col items-center text-center w-full mt-2">
+//           {/* 1. 시설 이름 (NeoDunggeunmo 서체, 가장 크고 두껍게) */}
+//           <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-wider font-pixel-title drop-shadow-[0_4px_0_rgba(0,0,0,0.7)]">
+//             {currentPlace ? currentPlace.name : "문화시설"}
+//           </h1>
+          
+//           {/* 2. 방문 완료! (시설명 바로 밑에 골드 컬러 포인트 배치) */}
+//           <h2 className="text-2xl sm:text-3xl font-bold text-[#ffd700] tracking-widest font-pixel-title mb-5">
+//             방문 완료!
+//           </h2>
+          
+//           {/* 3. 안내 문구 (Galmuri11 기본 서체, 명도 쨍하게 유지) */}
+//           <p className="text-sm sm:text-base text-gray-100 font-medium leading-relaxed max-w-xs break-keep font-pixel-title">
+//             새로운 문화시설이 지도에 등록되었습니다.
+//           </p>
+//         </div>
+
+//         {/* 지도로 확인하러 가기 액션 버튼 */}
+//         <a
+//           href="/"
+//           // 픽셀 스타일과 어울리도록 그라데이션 대신 쨍한 골드 옐로우 톤의 레트로 버튼으로 가독성을 높였습니다.
+//           className="px-8 py-3.5 bg-[#ffd700] hover:bg-yellow-400 text-black font-extrabold rounded-xl shadow-[0_5px_0_#9e7200] hover:translate-y-[2px] hover:shadow-[0_3px_0_#9e7200] active:translate-y-[5px] active:shadow-none transition-all duration-100 font-pixel-title text-base tracking-wide"
+//         >
+//           내 지도에서 확인하기
+//         </a>
+
+//       </div>
+//     </main>
+//   );
+// }

@@ -27,7 +27,7 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1142639130?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081429%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "27.28%",
-        left: "41.32%"
+        left: "42%"
     },
     {
         id: "haeparangil-info",
@@ -137,7 +137,7 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/2041962957?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081430%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "41.38%",
-        left: "34.86%"
+        left: "34.3%"
     },
     {
         id: "uam-artnarae",
@@ -258,12 +258,13 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 ;
-function MapFacility({ name, image, top, left, unlocked }) {
+function MapFacility({ id, name, image, top, left, unlocked, zIndex }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "absolute z-20 flex flex-col items-center",
+        className: "   absolute   flex   flex-col   items-center   cursor-pointer ",
         style: {
             left,
             top,
+            zIndex,
             transform: "translate(-50%, -50%)"
         },
         children: [
@@ -282,26 +283,26 @@ function MapFacility({ name, image, top, left, unlocked }) {
             items-center
             justify-center
             font-galmuri
-            z-[999]
+            z-20
             pointer-events-none
-            ${unlocked ? "bg-yellow-200 text-black" : "bg-gray-200 text-black"}
+            ${unlocked ? "bg-white text-black" : "bg-gray-500 text-black"}
           `,
                 style: {
-                    top: unlocked ? "-10px" : "-26px"
+                    top: unlocked ? "-10px" : "-20px"
                 },
                 children: name
             }, void 0, false, {
                 fileName: "[project]/components/MapFacility.tsx",
-                lineNumber: 27,
+                lineNumber: 39,
                 columnNumber: 8
             }, this),
             unlocked ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                 src: image,
                 alt: name,
-                className: "w-16 h-16 object-contain"
+                className: "w-16 h-16 object-contain relative z-10"
             }, void 0, false, {
                 fileName: "[project]/components/MapFacility.tsx",
-                lineNumber: 60,
+                lineNumber: 72,
                 columnNumber: 11
             }, this) : //잠금 아이콘 이미지
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -310,13 +311,13 @@ function MapFacility({ name, image, top, left, unlocked }) {
                 className: "w-8 h-8 object-contain relative z-0"
             }, void 0, false, {
                 fileName: "[project]/components/MapFacility.tsx",
-                lineNumber: 68,
+                lineNumber: 80,
                 columnNumber: 11
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/MapFacility.tsx",
-        lineNumber: 17,
+        lineNumber: 23,
         columnNumber: 5
     }, this);
 }
@@ -361,11 +362,13 @@ function MapCanvas({ visitedPlaces }) {
                 columnNumber: 7
             }, this),
             __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$places$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["places"].map((place)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MapFacility$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    id: place.id,
                     name: place.name,
                     image: place.mapImage,
                     top: place.top,
                     left: place.left,
-                    unlocked: visitedPlaces.includes(place.id)
+                    unlocked: visitedPlaces.includes(place.id),
+                    zIndex: place.zIndex
                 }, place.id, false, {
                     fileName: "[project]/components/MapCanvas.tsx",
                     lineNumber: 45,
@@ -377,7 +380,7 @@ function MapCanvas({ visitedPlaces }) {
                 className: "   absolute   bottom-0   left-0   w-full   pointer-events-none   "
             }, void 0, false, {
                 fileName: "[project]/components/MapCanvas.tsx",
-                lineNumber: 56,
+                lineNumber: 58,
                 columnNumber: 7
             }, this)
         ]
@@ -535,6 +538,7 @@ function Home() {
     //   유실 없는 최종 방문 이력 목록(visitedPlaces)을 완성합니다.
     // ----------------------------------------------------
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        alert("메인맵 useEffect 시작");
         const syncAndFetchVisits = async ()=>{
             if ("TURBOPACK compile-time truthy", 1) return;
             //TURBOPACK unreachable
@@ -561,7 +565,7 @@ function Home() {
                     totalCount: totalPlaces
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 175,
+                    lineNumber: 181,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -570,21 +574,31 @@ function Home() {
                     className: " absolute top-0 left-0 w-full z-40 pointer-events-none "
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 181,
+                    lineNumber: 187,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: " h-full overflow-y-auto ",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MapCanvas$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        visitedPlaces: visitedPlaces
-                    }, void 0, false, {
-                        fileName: "[project]/app/page.tsx",
-                        lineNumber: 201,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "fixed top-20 left-2 z-[999] bg-white text-black text-xs",
+                            children: JSON.stringify(visitedPlaces)
+                        }, void 0, false, {
+                            fileName: "[project]/app/page.tsx",
+                            lineNumber: 207,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MapCanvas$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            visitedPlaces: visitedPlaces
+                        }, void 0, false, {
+                            fileName: "[project]/app/page.tsx",
+                            lineNumber: 211,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 195,
+                    lineNumber: 201,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ProgressHUD$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -592,18 +606,18 @@ function Home() {
                     totalCount: totalPlaces
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 207,
+                    lineNumber: 217,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 164,
+            lineNumber: 170,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 163,
+        lineNumber: 169,
         columnNumber: 5
     }, this);
 }

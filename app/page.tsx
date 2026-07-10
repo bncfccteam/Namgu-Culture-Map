@@ -101,6 +101,8 @@ export default function Home() {
   //   유실 없는 최종 방문 이력 목록(visitedPlaces)을 완성합니다.
   // ----------------------------------------------------
   useEffect(() => {
+    alert("메인맵 useEffect 시작");
+    
     const syncAndFetchVisits = async () => {
       if (typeof window === 'undefined') return;
 
@@ -110,6 +112,10 @@ export default function Home() {
 
       // 2. 로컬 브라우저 저장소(localStorage)의 기존 방문 기록을 먼저 확보합니다.
       const localSaved = localStorage.getItem("visitedPlaces");
+      alert(
+        "메인맵 localStorage = " +
+        localSaved
+      );
       const localPlaces: string[] = localSaved ? JSON.parse(localSaved) : [];
 
       let mergedPlaces = [...localPlaces];
@@ -198,6 +204,10 @@ export default function Home() {
             overflow-y-auto
           "
         >
+          <div className="fixed top-20 left-2 z-[999] bg-white text-black text-xs">
+            {JSON.stringify(visitedPlaces)}
+          </div>
+
           <MapCanvas
             visitedPlaces={visitedPlaces}
           />

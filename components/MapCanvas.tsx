@@ -44,11 +44,13 @@ export default function MapCanvas({
       {places.map((place) => (
         <MapFacility
           key={place.id}
+          id={place.id}
           name={place.name}
           image={place.mapImage}
           top={place.top}
           left={place.left}
           unlocked={visitedPlaces.includes(place.id)}
+          zIndex={place.zIndex}
         />
       ))}
 
