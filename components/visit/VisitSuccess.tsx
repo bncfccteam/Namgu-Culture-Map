@@ -184,6 +184,22 @@ export default function VisitSuccess({ place }: VisitSuccessProps) {
             >
               {/* 시설 */}
               <div className="relative">
+                {/* 그림자 */}
+                <div  
+                  className="    
+                    absolute    
+                    left-1/2    
+                    -translate-x-1/2
+                    w-[90%]    
+                    h-10
+                    bg-black/30
+                    rounded-full
+                    blur-[1px]  
+                  "
+                  style={{
+                    bottom: `${place.shadow ?? 0}px`,
+                  }}
+                />
                 <img
                   src={place.detailImage}
                   alt={place.name}
@@ -247,32 +263,32 @@ export default function VisitSuccess({ place }: VisitSuccessProps) {
               >
                 <h2
                   className="
-          absolute
-          top-[14%]
-          left-1/2
-          -translate-x-1/2
+                    absolute
+                    top-[14%]
+                    left-1/2
+                    -translate-x-1/2
 
-          text-[#000]
-          text-2xl
-          font-bold
-          whitespace-nowrap
-        "
+                    text-[#000]
+                    text-2xl
+                    font-bold
+                    whitespace-nowrap
+                  "
                 >
                   {place.name}
                 </h2>
 
                 <h2
                   className="
-          absolute
-          top-[34%]
-          left-1/2
-          -translate-x-1/2
+                    absolute
+                    top-[34%]
+                    left-1/2
+                    -translate-x-1/2
 
-          text-[#3a2a1c]
-          text-xl
-          font-bold
-          whitespace-nowrap
-        "
+                    text-[#3a2a1c]
+                    text-xl
+                    font-bold
+                    whitespace-nowrap
+                  "
                 >
                   탐험 완료!
                 </h2>

@@ -17,7 +17,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/37232711?c=12.32,0,0,2,dh&placePath=%2Fhome%3FbookmarkId%3D4446022062%26from%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081418%26locale%3Dko%26svcName%3Dmap_pcv5%26from%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081418%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "37%",
-        left: "16.74%"
+        left: "16.74%",
+        shadow: 0.5
     },
     {
         id: "daedonggol-culture",
@@ -29,7 +30,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1142639130?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081429%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "27.28%",
-        left: "42%"
+        left: "42%",
+        shadow: 3
     },
     {
         id: "haeparangil-info",
@@ -41,7 +43,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/33774450?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081437%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "66.51%",
-        left: "84.51%"
+        left: "84.51%",
+        shadow: 1
     },
     {
         id: "somak-village",
@@ -53,7 +56,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1321332705?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081439%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "49.35%",
-        left: "18.33%"
+        left: "18.33%",
+        shadow: 3
     },
     {
         id: "bunpo-sports",
@@ -65,7 +69,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1991763621?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081439%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "45.24%",
-        left: "74.38%"
+        left: "74.38%",
+        shadow: 1
     },
     {
         id: "namgu-library",
@@ -77,7 +82,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/16850124?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081439%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "38.65%",
-        left: "47.78%"
+        left: "47.78%",
+        shadow: 1
     },
     {
         id: "gogossing-job",
@@ -89,7 +95,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1990914746?c=12.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081750%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "45.10%",
-        left: "57.78%"
+        left: "57.78%",
+        shadow: 0.5
     },
     {
         id: "miu-study",
@@ -101,7 +108,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1287245498?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081439%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "60.06%",
-        left: "73.61%"
+        left: "73.61%",
+        shadow: 0.5
     },
     {
         id: "sunflower",
@@ -113,7 +121,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1525295969?c=15.00,0,0,2,dh&placePath=%",
         top: "39.90%",
-        left: "61.81%"
+        left: "61.81%",
+        shadow: 0.5
     },
     {
         id: "garam-arthall",
@@ -125,7 +134,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/21111780?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081440%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "46.93%",
-        left: "46.04%"
+        left: "46.04%",
+        shadow: 0.5
     },
     {
         id: "gamman-culture",
@@ -137,7 +147,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/1122014212?c=12.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081750%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "54.20%",
-        left: "31.04%"
+        left: "31.04%",
+        shadow: 2
     },
     {
         id: "namgu-foundation",
@@ -149,7 +160,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/place/2041962957?c=15.00,0,0,2,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202607081430%26locale%3Dko%26svcName%3Dmap_pcv5",
         top: "41.38%",
-        left: "34.3%"
+        left: "34.3%",
+        shadow: 1
     },
     {
         id: "uam-artnarae",
@@ -161,7 +173,8 @@ const places = [
         description: "...",
         naverMap: "https://map.naver.com/p/entry/address/3AHDEm,2z7LYM,%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%9A%B0%EC%95%94%EB%8F%99%20121-6?c=12.00,0,0,2,dh",
         top: "44.58%",
-        left: "20.28%"
+        left: "20.28%",
+        shadow: 2
     }
 ];
 }),
