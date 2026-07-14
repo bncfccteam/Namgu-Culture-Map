@@ -101,7 +101,6 @@ export default function Home() {
   //   유실 없는 최종 방문 이력 목록(visitedPlaces)을 완성합니다.
   // ----------------------------------------------------
   useEffect(() => {
-    alert("메인맵 useEffect 시작");
     
     const syncAndFetchVisits = async () => {
       if (typeof window === 'undefined') return;
@@ -112,10 +111,6 @@ export default function Home() {
 
       // 2. 로컬 브라우저 저장소(localStorage)의 기존 방문 기록을 먼저 확보합니다.
       const localSaved = localStorage.getItem("visitedPlaces");
-      alert(
-        "메인맵 localStorage = " +
-        localSaved
-      );
       const localPlaces: string[] = localSaved ? JSON.parse(localSaved) : [];
 
       let mergedPlaces = [...localPlaces];
@@ -163,12 +158,12 @@ export default function Home() {
   // 13개 장소에 연동되어 게이지가 약 7.69%씩 동적으로 상승합니다.
   const progress = totalPlaces > 0 ? (visitedCount / totalPlaces) * 100 : 0;
 
-
+// #ffffff
 
   return (
     <main className="min-h-screen bg-[#0077b6] flex justify-center">
       <div
-      className="
+        className="
         relative
         w-full
         max-w-[480px]
@@ -178,10 +173,7 @@ export default function Home() {
       "
       >
         {/* 헤더 */}
-        <MapHeader
-          visitedCount={visitedCount}
-          totalCount={totalPlaces}
-        />
+        <MapHeader visitedCount={visitedCount} totalCount={totalPlaces} />
 
         {/* 고정 안개 */}
         <img
@@ -192,11 +184,11 @@ export default function Home() {
             top-0
             left-0
             w-full
-            z-40
+            z-100
             pointer-events-none
           "
         />
-        
+
         {/* 스크롤 영역 */}
         <div
           className="
@@ -204,21 +196,11 @@ export default function Home() {
             overflow-y-auto
           "
         >
-          <div className="fixed top-20 left-2 z-[999] bg-white text-black text-xs">
-            {JSON.stringify(visitedPlaces)}
-          </div>
-
-          <MapCanvas
-            visitedPlaces={visitedPlaces}
-          />
+          <MapCanvas visitedPlaces={visitedPlaces} />
         </div>
-          
-        {/* 진행률 바 */}
-        <ProgressHUD
-          visitedCount={visitedCount}
-          totalCount={totalPlaces}
-        />
 
+        {/* 진행률 바 */}
+        <ProgressHUD visitedCount={visitedCount} totalCount={totalPlaces} />
       </div>
     </main>
   );

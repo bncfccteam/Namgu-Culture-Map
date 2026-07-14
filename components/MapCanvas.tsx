@@ -20,7 +20,6 @@ export default function MapCanvas({
         className="
           absolute
           inset-0
-          -z-10
           bg-repeat
         "
         style={{

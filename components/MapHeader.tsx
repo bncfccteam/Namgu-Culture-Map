@@ -15,7 +15,7 @@ export default function MapHeader({
         top-0
         left-0
         right-0
-        z-50
+        z-110
         pt-8
         text-center
         pointer-events-none
@@ -23,51 +23,60 @@ export default function MapHeader({
     >
 
       {/* 메인 타이틀 */}
-      <div className="leading-none">
+      <div className="leading-none text-center">
+
+        {/* 남구 문화탐험 상단 소제목 */}
         <div
-          className="font-pixel-title text-[20px]"
+          className="
+            font-galmuri
+            text-[13px]
+            mb-1
+          "
           style={{
-            color: "#ffcc33",
-            textShadow: `
-              3px 3px 0 #000,
-              -3px 3px 0 #000,
-              3px -3px 0 #000,
-              -3px -3px 0 #000
-            `,
+            color: "#48008b"
+          ,  WebkitTextStroke: "0.3px #48008b"
           }}
         >
-          남구
+          부산 남구 문화체험
         </div>
 
+        {/* 디지털 문화지도 메인 타이틀 */}
         <div
-          className="font-pixel-title text-[36px] -mt-1"
+          className="
+            mt-2
+            font-galmuri
+            text-[30px]
+            sm:text-[36px]
+            leading-none
+          "
           style={{
-            color: "#38b000",
-            textShadow: `
-              3px 3px 0 #000,
-              -3px 3px 0 #000,
-              3px -3px 0 #000,
-              -3px -3px 0 #000
-            `,
+            color: "#000000",
+            WebkitTextStroke: "1.2px #000000",
           }}
         >
           디지털 문화지도
         </div>
+
       </div>
+
 
       {/* 설명 */}
       <p
         className="
-          mt-3
-          text-[12px]
+          mt-2
+          text-[11px]
           text-black
-          leading-relaxed
+          leading-[1.4]
+          font-sans
         "
         
       >
-        남구의 문화시설 13곳을 방문해
+        {/* 남구의 문화시설 13곳을 방문해
         <br />
-        잠겨진 맵을 활성화합니다
+        잠겨진 시설을 해금해 보세요 */}
+        남구 곳곳의 문화시설을 탐험하며 
+        <br />
+        QR코드로 시설을 해금하고 지도를 완성해 보세요
       </p>
 
     
@@ -77,26 +86,3 @@ export default function MapHeader({
 
 
 
-
-
-
-// ~0706
-// export default function MapHeader({
-//   visitedCount,
-//   totalCount,
-// }: Props) {
-//   return (
-//     <header className="absolute top-0 left-0 right-0 z-50 px-6 pt-6 text-center pointer-events-none">
-//       <div className="max-w-md mx-auto px-5 py-4">
-//         <h1 className="font-pixel-title text-xl text-black">
-//           남구 디지털 문화지도
-//         </h1>
-
-//         <p className="text-xs text-gray-600 mt-1">
-//           남구의 문화시설 13곳을 방문해 잠겨진 맵을 활성화합니다
-//         </p>
-
-//       </div>
-//     </header>
-//   );
-// }
