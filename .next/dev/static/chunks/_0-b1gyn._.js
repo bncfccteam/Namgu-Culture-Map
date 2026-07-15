@@ -213,9 +213,12 @@ const initializeUserInPage = async (supabase)=>{
                 if (error) throw error;
                 localStorage.setItem(STORAGE_KEY, userId);
             } catch (error) {
-                const errorMessage = error instanceof Error ? error.message : String(error);
-                console.error("🚨 [Supabase] 사용자 등록 중 오류 발생:", errorMessage);
-                localStorage.setItem(STORAGE_KEY, userId);
+                // const errorMessage =
+                //   error instanceof Error ? error.message : String(error);
+                // console.error("🚨 [Supabase] 사용자 등록 중 오류 발생:", errorMessage);
+                // localStorage.setItem(STORAGE_KEY, userId);
+                console.error("🚨 [Supabase] 사용자 등록 중 오류 발생:", error);
+                return null;
             }
         } else {
             localStorage.setItem(STORAGE_KEY, userId);
@@ -237,12 +240,23 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 ;
 function VisitLoading() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: "방문 처리중..."
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+        className: "h-[100dvh] flex items-center justify-center ",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "   relative   font-galmuri   text-[20px]   text-white   ",
+            style: {
+                WebkitTextStroke: "0.3px #ffffff"
+            },
+            children: "방문 확인 중 ..."
+        }, void 0, false, {
+            fileName: "[project]/components/visit/VisitLoading.tsx",
+            lineNumber: 4,
+            columnNumber: 7
+        }, this)
     }, void 0, false, {
         fileName: "[project]/components/visit/VisitLoading.tsx",
-        lineNumber: 2,
-        columnNumber: 10
+        lineNumber: 3,
+        columnNumber: 5
     }, this);
 }
 _c = VisitLoading;
@@ -259,16 +273,8 @@ __turbopack_context__.s([
     "default",
     ()=>VisitLoading
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-;
 function VisitLoading() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: "오류 발생"
-    }, void 0, false, {
-        fileName: "[project]/components/visit/VisitError.tsx",
-        lineNumber: 2,
-        columnNumber: 10
-    }, this);
+    return;
 }
 _c = VisitLoading;
 var _c;
@@ -322,7 +328,7 @@ function VisitSuccess({ place }) {
     // #14c3db
     return(// 전체 화면: flex와 h-screen을 통해 상하 화면을 꽉 채우고 스크롤을 방지합니다.
     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-        className: "flex h-screen flex-col bg-[#2bc4a9]  text-white overflow-hidden relative",
+        className: "flex h-[100dvh] flex-col pb-[env(safe-area-inset-bottom)] bg-[#2bc4a9]  text-white overflow-hidden relative ",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 dangerouslySetInnerHTML: {
@@ -734,7 +740,6 @@ function VisitPage() {
     _s();
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
     const placeId = typeof params.placeId === "string" ? params.placeId : "";
-    const [isAnimating, setIsAnimating] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     /////0711토_visit/page 기능 분리용/////////
     const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("loading");
     /////////////////////////////////////////
@@ -759,14 +764,8 @@ function VisitPage() {
                                     place_id: placeId
                                 }
                             ]);
-                            if (visitError) {
-                                if (visitError.code === "23505") {
-                                    console.log("📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다.");
-                                } else {
-                                    throw visitError;
-                                }
-                            } else {
-                                console.log(`🎉 [Supabase] ${placeId} 방문 기록 서버 전송 성공!`);
+                            if (visitError && visitError.code !== "23505") {
+                                throw visitError;
                             }
                         } else {
                             console.warn("⚠️ Supabase 데이터베이스 연결을 확립할 수 없습니다. 오프라인 모드로 진행합니다.");
@@ -781,8 +780,7 @@ function VisitPage() {
                         }
                     } catch (error) {
                         setStatus("error");
-                        const errorMessage = error instanceof Error ? error.message : String(error);
-                        console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", errorMessage);
+                        console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", error);
                         // 서버 장애나 일시적 통신 무산 시에도, 사용자의 온디바이스(localStorage) 저장을 수행하여 이탈을 방지합니다.
                         if (placeId) {
                             const saved = localStorage.getItem("visitedPlaces");
@@ -798,13 +796,12 @@ function VisitPage() {
             if (placeId) {
                 handleRegisterAndVisit();
             }
-            // 기존의 3초간의 연출 및 로딩 애니메이션 유지
+            // 0.1초 로딩(대기시키기) 후 페이지 보여짐 
             const timer = setTimeout({
                 "VisitPage.useEffect.timer": ()=>{
-                    setIsAnimating(false);
                     setStatus("success");
                 }
-            }["VisitPage.useEffect.timer"], 3000);
+            }["VisitPage.useEffect.timer"], 100);
             return ({
                 "VisitPage.useEffect": ()=>clearTimeout(timer)
             })["VisitPage.useEffect"];
@@ -820,34 +817,34 @@ function VisitPage() {
             children: [
                 status === "loading" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$visit$2f$VisitLoading$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/visit/[placeId]/page.tsx",
-                    lineNumber: 186,
+                    lineNumber: 174,
                     columnNumber: 34
                 }, this),
                 status === "error" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$visit$2f$VisitError$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/visit/[placeId]/page.tsx",
-                    lineNumber: 188,
+                    lineNumber: 176,
                     columnNumber: 32
                 }, this),
                 status === "success" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$visit$2f$VisitSuccess$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                     place: currentPlace
                 }, void 0, false, {
                     fileName: "[project]/app/visit/[placeId]/page.tsx",
-                    lineNumber: 190,
+                    lineNumber: 178,
                     columnNumber: 34
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/visit/[placeId]/page.tsx",
-            lineNumber: 177,
+            lineNumber: 165,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/visit/[placeId]/page.tsx",
-        lineNumber: 176,
+        lineNumber: 164,
         columnNumber: 5
     }, this);
 }
-_s(VisitPage, "C52mrxmbC+qEzFCi+t0mqjSzs3A=", false, function() {
+_s(VisitPage, "BfpmPwpOM0h/1y+FC5iphEqf9gE=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
     ];

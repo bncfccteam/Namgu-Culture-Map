@@ -161,7 +161,7 @@ export default function Home() {
 // #ffffff
 
   return (
-    <main className="min-h-screen bg-[#0077b6] flex justify-center">
+    <main className="min-h-[100dvh] bg-[#0077b6] flex justify-center">
       <div
         className="
         relative

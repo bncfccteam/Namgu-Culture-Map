@@ -79,7 +79,6 @@ export default function VisitPage() {
 
   const placeId = typeof params.placeId === "string" ? params.placeId : "";
 
-  const [isAnimating, setIsAnimating] = useState(true);
 
   /////0711토_visit/page 기능 분리용/////////
   const [status, setStatus] = useState<"loading" | "success" | "error">(
@@ -109,16 +108,8 @@ export default function VisitPage() {
             .from("visits")
             .insert([{ user_id: userId, place_id: placeId }]);
 
-          if (visitError) {
-            if (visitError.code === "23505") {
-              console.log(
-                "📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다.",
-              );
-            } else {
-              throw visitError;
-            }
-          } else {
-            console.log(`🎉 [Supabase] ${placeId} 방문 기록 서버 전송 성공!`);
+          if (visitError && visitError.code !== "23505") {
+            throw visitError;
           }
         } else {
           console.warn(
@@ -137,10 +128,8 @@ export default function VisitPage() {
         }
       } catch (error) {
         setStatus("error");
-        const errorMessage =
-          error instanceof Error ? error.message : String(error);
 
-        console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", errorMessage);
+        console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", error);
 
         // 서버 장애나 일시적 통신 무산 시에도, 사용자의 온디바이스(localStorage) 저장을 수행하여 이탈을 방지합니다.
         if (placeId) {
@@ -161,11 +150,10 @@ export default function VisitPage() {
       handleRegisterAndVisit();
     }
 
-    // 기존의 3초간의 연출 및 로딩 애니메이션 유지
+    // 0.1초 로딩(대기시키기) 후 페이지 보여짐 
     const timer = setTimeout(() => {
-      setIsAnimating(false);
       setStatus("success");
-    }, 3000);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [placeId]);

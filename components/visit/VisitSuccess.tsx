@@ -16,7 +16,7 @@ export default function VisitSuccess({ place }: VisitSuccessProps) {
   // #14c3db
   return (
     // 전체 화면: flex와 h-screen을 통해 상하 화면을 꽉 채우고 스크롤을 방지합니다.
-    <main className="flex h-screen flex-col bg-[#2bc4a9]  text-white overflow-hidden relative">
+    <main className="flex h-[100dvh] flex-col pb-[env(safe-area-inset-bottom)] bg-[#2bc4a9]  text-white overflow-hidden relative ">
       <style
         dangerouslySetInnerHTML={{
           __html: `
