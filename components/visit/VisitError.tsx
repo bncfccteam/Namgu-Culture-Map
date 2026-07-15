@@ -1,3 +1,7 @@
 export default function VisitLoading() {
-  return;
+  return (
+    <div>
+      오류 발생
+    </div>
+  );
 }
