@@ -213,10 +213,6 @@ const initializeUserInPage = async (supabase)=>{
                 if (error) throw error;
                 localStorage.setItem(STORAGE_KEY, userId);
             } catch (error) {
-                // const errorMessage =
-                //   error instanceof Error ? error.message : String(error);
-                // console.error("🚨 [Supabase] 사용자 등록 중 오류 발생:", errorMessage);
-                // localStorage.setItem(STORAGE_KEY, userId);
                 console.error("🚨 [Supabase] 사용자 등록 중 오류 발생:", error);
                 return null;
             }
@@ -273,8 +269,16 @@ __turbopack_context__.s([
     "default",
     ()=>VisitLoading
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+;
 function VisitLoading() {
-    return;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        children: "오류 발생"
+    }, void 0, false, {
+        fileName: "[project]/components/visit/VisitError.tsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
 }
 _c = VisitLoading;
 var _c;
@@ -811,7 +815,7 @@ function VisitPage() {
     ]);
     const currentPlace = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$places$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["places"].find((place)=>place.id === placeId);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-        className: "min-h-screen bg-[#0077b6] flex justify-center",
+        className: "min-h-[100dvh] bg-[#0077b6] flex justify-center",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "   relative   w-full   max-w-[480px]   h-screen   overflow-hidden   ",
             children: [

@@ -230,8 +230,16 @@ __turbopack_context__.s([
     "default",
     ()=>VisitLoading
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+;
 function VisitLoading() {
-    return;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        children: "오류 발생"
+    }, void 0, false, {
+        fileName: "[project]/components/visit/VisitError.tsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
 }
 }),
 "[project]/components/visit/VisitSuccess.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
@@ -739,7 +747,7 @@ function VisitPage() {
     ]);
     const currentPlace = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$places$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["places"].find((place)=>place.id === placeId);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-        className: "min-h-screen bg-[#0077b6] flex justify-center",
+        className: "min-h-[100dvh] bg-[#0077b6] flex justify-center",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "   relative   w-full   max-w-[480px]   h-screen   overflow-hidden   ",
             children: [

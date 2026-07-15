@@ -26,15 +26,10 @@ export const initializeUserInPage = async (supabase: any) => {
 
         localStorage.setItem(STORAGE_KEY, userId);
       } catch (error) {
-        // const errorMessage =
-        //   error instanceof Error ? error.message : String(error);
-        // console.error("🚨 [Supabase] 사용자 등록 중 오류 발생:", errorMessage);
-        // localStorage.setItem(STORAGE_KEY, userId);
         console.error(
           "🚨 [Supabase] 사용자 등록 중 오류 발생:",
           error
         );
-
         return null;
       }
     } else {

@@ -1,12 +1,9 @@
-{"timestamp":"00:00:01.198","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.612","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:02.783","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
-{"timestamp":"00:00:41.039","source":"Server","level":"LOG","message":"✓ Compiled in 391ms"}
-{"timestamp":"00:01:16.884","source":"Server","level":"LOG","message":"✓ Compiled in 221ms"}
-{"timestamp":"00:01:21.887","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:01:22.289","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
-{"timestamp":"00:01:22.974","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:01:23.608","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
-{"timestamp":"00:01:29.465","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:01:31.084","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
-{"timestamp":"00:02:56.099","source":"Server","level":"WARN","message":"⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from \"192.168.110.9\".\nCross-origin access to Next.js dev resources is blocked by default for safety.\n\nTo allow this host in development, add it to \"allowedDevOrigins\" in next.config.js and restart the dev server:\n\n// next.config.js\nmodule.exports = {\n  allowedDevOrigins: ['192.168.110.9'],\n}\n\nRead more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins"}
+{"timestamp":"00:00:01.253","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:04.192","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:06.037","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
+{"timestamp":"00:00:07.538","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:07.826","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
+{"timestamp":"00:00:13.813","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:02:51.210","source":"Server","level":"LOG","message":"✓ Compiled in 64ms"}
+{"timestamp":"00:03:29.531","source":"Server","level":"LOG","message":"✓ Compiled in 52ms"}
+{"timestamp":"00:03:33.218","source":"Server","level":"LOG","message":"✓ Compiled in 32ms"}
