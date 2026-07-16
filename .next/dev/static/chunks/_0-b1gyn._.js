@@ -273,7 +273,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 function VisitLoading() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: "오류 발생"
+        children: "..."
     }, void 0, false, {
         fileName: "[project]/components/visit/VisitError.tsx",
         lineNumber: 3,
@@ -744,6 +744,7 @@ function VisitPage() {
     _s();
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
     const placeId = typeof params.placeId === "string" ? params.placeId : "";
+    const [isAnimating, setIsAnimating] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     /////0711토_visit/page 기능 분리용/////////
     const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("loading");
     /////////////////////////////////////////
@@ -768,8 +769,14 @@ function VisitPage() {
                                     place_id: placeId
                                 }
                             ]);
-                            if (visitError && visitError.code !== "23505") {
-                                throw visitError;
+                            if (visitError) {
+                                if (visitError.code === "23505") {
+                                    console.log("📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다.");
+                                } else {
+                                    throw visitError;
+                                }
+                            } else {
+                                console.log(`🎉 [Supabase] ${placeId} 방문 기록 서버 전송 성공!`);
                             }
                         } else {
                             console.warn("⚠️ Supabase 데이터베이스 연결을 확립할 수 없습니다. 오프라인 모드로 진행합니다.");
@@ -784,7 +791,8 @@ function VisitPage() {
                         }
                     } catch (error) {
                         setStatus("error");
-                        console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", error);
+                        const errorMessage = error instanceof Error ? error.message : String(error);
+                        console.error("🚨 [Supabase] 방문지 등록 중 오류 발생:", errorMessage);
                         // 서버 장애나 일시적 통신 무산 시에도, 사용자의 온디바이스(localStorage) 저장을 수행하여 이탈을 방지합니다.
                         if (placeId) {
                             const saved = localStorage.getItem("visitedPlaces");
@@ -800,12 +808,13 @@ function VisitPage() {
             if (placeId) {
                 handleRegisterAndVisit();
             }
-            // 0.1초 로딩(대기시키기) 후 페이지 보여짐 
+            // 기존의 3초간의 연출 및 로딩 애니메이션 유지
             const timer = setTimeout({
                 "VisitPage.useEffect.timer": ()=>{
+                    setIsAnimating(false);
                     setStatus("success");
                 }
-            }["VisitPage.useEffect.timer"], 100);
+            }["VisitPage.useEffect.timer"], 500);
             return ({
                 "VisitPage.useEffect": ()=>clearTimeout(timer)
             })["VisitPage.useEffect"];
@@ -815,40 +824,40 @@ function VisitPage() {
     ]);
     const currentPlace = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$places$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["places"].find((place)=>place.id === placeId);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-        className: "min-h-[100dvh] bg-[#0077b6] flex justify-center",
+        className: "min-h-screen bg-[#0077b6] flex justify-center",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "   relative   w-full   max-w-[480px]   h-screen   overflow-hidden   ",
             children: [
                 status === "loading" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$visit$2f$VisitLoading$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/visit/[placeId]/page.tsx",
-                    lineNumber: 174,
+                    lineNumber: 186,
                     columnNumber: 34
                 }, this),
                 status === "error" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$visit$2f$VisitError$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/visit/[placeId]/page.tsx",
-                    lineNumber: 176,
+                    lineNumber: 188,
                     columnNumber: 32
                 }, this),
                 status === "success" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$visit$2f$VisitSuccess$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                     place: currentPlace
                 }, void 0, false, {
                     fileName: "[project]/app/visit/[placeId]/page.tsx",
-                    lineNumber: 178,
+                    lineNumber: 190,
                     columnNumber: 34
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/visit/[placeId]/page.tsx",
-            lineNumber: 165,
+            lineNumber: 177,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/visit/[placeId]/page.tsx",
-        lineNumber: 164,
+        lineNumber: 176,
         columnNumber: 5
     }, this);
 }
-_s(VisitPage, "BfpmPwpOM0h/1y+FC5iphEqf9gE=", false, function() {
+_s(VisitPage, "C52mrxmbC+qEzFCi+t0mqjSzs3A=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
     ];

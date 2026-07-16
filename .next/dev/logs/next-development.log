@@ -1,4 +1,5 @@
-{"timestamp":"00:00:02.015","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:07:35.934","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:07:38.569","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:07:39.206","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
+{"timestamp":"00:00:01.535","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:02.745","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:03.289","source":"Browser","level":"LOG","message":"📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다."}
+{"timestamp":"00:00:06.003","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:06.571","source":"Browser","level":"LOG","message":"📱 [Supabase] 이미 데이터베이스에 등록된 방문지입니다."}
