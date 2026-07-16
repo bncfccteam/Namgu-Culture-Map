@@ -1,9 +1,4 @@
-{"timestamp":"00:00:01.253","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:04.192","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:06.037","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
-{"timestamp":"00:00:07.538","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:07.826","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"daedonggol-culture\"]"}
-{"timestamp":"00:00:13.813","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:02:51.210","source":"Server","level":"LOG","message":"✓ Compiled in 64ms"}
-{"timestamp":"00:03:29.531","source":"Server","level":"LOG","message":"✓ Compiled in 52ms"}
-{"timestamp":"00:03:33.218","source":"Server","level":"LOG","message":"✓ Compiled in 32ms"}
+{"timestamp":"00:00:02.015","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:07:35.934","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:07:38.569","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:07:39.206","source":"Browser","level":"LOG","message":"📊 [6.2단계 - Supabase] 서버 방문지 데이터 동기화 완료: [\"munhyeon-art\"]"}
