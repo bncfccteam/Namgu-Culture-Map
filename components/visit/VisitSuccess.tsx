@@ -295,15 +295,15 @@ export default function VisitSuccess({ place }: VisitSuccessProps) {
 
                 <p
                   className="
-          absolute
-          top-[52%]
-          left-1/2
-          -translate-x-1/2
+                    absolute
+                    top-[52%]
+                    left-1/2
+                    -translate-x-1/2
 
-          text-[#3a2a1c]
-          text-sm
-          whitespace-nowrap
-        "
+                    text-[#3a2a1c]
+                    text-sm
+                    whitespace-nowrap
+                  "
                 >
                   지도에 새로운 장소가 등록되었습니다.
                 </p>
@@ -348,33 +348,4 @@ export default function VisitSuccess({ place }: VisitSuccessProps) {
   );
 }
 
-{
-  /* 라벨 */
-}
-{
-  /* <div
-                  className="
-                    absolute
-                    -top-5
-                    left-6
 
-                    px-4
-                    py-1
-
-                    bg-[#ece7dd]
-
-                    border-[2px]
-                    border-[#3a2a1c]
-
-                    shadow-[1px_1px_0_#000]
-
-                    text-[#3a2a1c]
-                    text-sm
-                    font-bold
-
-                    z-10
-                  "
-                >
-                  {place.name}
-                </div> */
-}

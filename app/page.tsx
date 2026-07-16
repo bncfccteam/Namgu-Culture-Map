@@ -159,9 +159,8 @@ export default function Home() {
   const progress = totalPlaces > 0 ? (visitedCount / totalPlaces) * 100 : 0;
 
 // #ffffff
-
   return (
-    <main className="min-h-[100dvh] bg-[#0077b6] flex justify-center">
+    <main className="h-[100dvh] bg-[#0077b6] flex justify-center">
       <div
         className="
         relative
